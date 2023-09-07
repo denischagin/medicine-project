@@ -3,8 +3,13 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: $primary-color-400;
   padding: 10px 26px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: row-reverse;
+  }
 
   h2 {
     color: #fff;
@@ -20,7 +25,7 @@
     .menu {
       display: flex;
       align-items: center;
-      
+
       a {
         color: #fff;
         font-family: Inter;
@@ -31,6 +36,17 @@
       li + li {
         margin-left: 30px;
       }
+    }
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  .burger_button {
+    display: none;
+
+    @media screen and (max-width: 600px) {
+      display: flex;
     }
   }
 }

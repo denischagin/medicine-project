@@ -2,7 +2,7 @@ import { InputPassword } from "@components/ui/InputPassword";
 import { Button, Input } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import { paths } from "@/utlis/constants";
-import css from './RegistrationForm.module.scss'
+import css from "./RegistrationForm.module.scss";
 
 export const RegistrationForm = () => {
   return (

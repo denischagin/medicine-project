@@ -12,6 +12,10 @@
     font-size: 54px;
     font-weight: 800;
     margin-bottom: 30px;
+    
+    @media screen and (max-width: 415px){
+      font-size: 30px;
+    }
   }
 
   &_card {

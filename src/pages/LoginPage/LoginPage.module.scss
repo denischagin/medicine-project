@@ -1,4 +1,7 @@
-.login_wrapper {
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   padding-top: 40px;
 
@@ -11,7 +14,7 @@
     margin-bottom: 30px;
   }
 
-  .login_card {
+  &_card {
     margin: 0 auto;
     max-width: 467px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -26,10 +29,18 @@
       padding: 0 36px;
       padding-bottom: 35px;
 
-      input {
+      .login_field {
         margin-top: 25px;
 
         &::-webkit-input-placeholder {
+          color: #adadad;
+          font-family: Inter;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 800;
+        }
+
+        input::-webkit-input-placeholder {
           color: #adadad;
           font-family: Inter;
           font-size: 20px;

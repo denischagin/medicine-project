@@ -1,5 +1,5 @@
 .layout {
-  height: 100vh;
-  background: url("../../assets/imgs/background.png");
+  min-height: 100vh;
+  background: url("../../assets/imgs/background.png") repeat-y;
   background-size: cover;
 }

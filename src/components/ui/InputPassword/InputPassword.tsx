@@ -4,20 +4,19 @@ import {
   InputGroup,
   InputRightElement,
   Image,
+  InputProps,
 } from "@chakra-ui/react";
-import css from "./InputPassword.module.scss";
 import eyeOff from "@assets/svgs/eye-off.svg";
 import eye from "@assets/svgs/eye.svg";
 import { useState } from "react";
 
-interface InputPasswordProps {
+interface InputPasswordProps extends InputProps {
   classNameInputGroup?: string;
-  placeholder?: string;
 }
 
 export const InputPassword = ({
   classNameInputGroup,
-  placeholder = "",
+  ...restProps
 }: InputPasswordProps) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
 
@@ -26,9 +25,9 @@ export const InputPassword = ({
   return (
     <InputGroup className={classNameInputGroup}>
       <Input
+        {...restProps}
         type={isShowPassword ? "text" : "password"}
         variant="flushed"
-        placeholder={placeholder}
         size="md"
         width="100%"
         required

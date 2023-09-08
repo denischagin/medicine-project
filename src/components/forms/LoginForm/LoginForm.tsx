@@ -8,7 +8,7 @@ import { ILogin } from "@/utlis/models";
 import { useLoginMutation } from "@/utlis/hooks";
 
 export const LoginForm = () => {
-  const { mutate: loginMutate, isSuccess } = useLoginMutation();
+  const { mutate: loginMutate, isSuccess, isLoading } = useLoginMutation();
   const navigate = useNavigate();
   
   if (isSuccess) navigate(paths.home, { replace: true });
@@ -55,6 +55,7 @@ export const LoginForm = () => {
         className={css.login_form_submit}
         bg="green.900"
         color="white"
+        isLoading={isLoading}
       >
         Войти
       </Button>

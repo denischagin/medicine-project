@@ -8,7 +8,7 @@ import { IRegistration } from "@/utlis/models";
 import { useRegistrationMutation } from "@/utlis/hooks";
 
 export const RegistrationForm = () => {
-  const { mutate: registrationMutate, isSuccess } = useRegistrationMutation();
+  const { mutate: registrationMutate, isSuccess, isLoading } = useRegistrationMutation();
   const navigate = useNavigate();
   
   if (isSuccess) navigate(paths.home, { replace: true });
@@ -117,6 +117,7 @@ export const RegistrationForm = () => {
         className={css.registration_form_submit}
         bg="green.900"
         color="white"
+        isLoading={isLoading}
       >
         Зарегистрироваться
       </Button>

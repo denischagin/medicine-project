@@ -7,13 +7,14 @@
 
   .login_field {
     margin-top: 25px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    color: rgb(81, 81, 81);
 
     &::-webkit-input-placeholder {
       color: #adadad;
       font-family: Inter;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 800;
     }
 
     input::-webkit-input-placeholder {
@@ -37,9 +38,7 @@
   &_submit {
     width: 230px;
     border-radius: 10px;
-    background: #1f4c2e;
 
-    color: #fff;
     font-family: Inter;
     font-size: 20px;
     font-weight: 800;

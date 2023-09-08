@@ -85,7 +85,13 @@ export const RegistrationForm = () => {
         Уже есть аккаунт?
       </NavLink>
 
-      <Button type="submit" className={css.registration_form_submit}>
+      <Button
+        type="submit"
+        colorScheme="blackAlpha"
+        className={css.registration_form_submit}
+        bg="green.900"
+        color="white"
+      >
         Зарегистрироваться
       </Button>
     </form>

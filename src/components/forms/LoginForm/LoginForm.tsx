@@ -25,7 +25,13 @@ export const LoginForm = () => {
         Нет аккаунта?
       </NavLink>
 
-      <Button type="submit" className={css.login_form_submit}>
+      <Button
+        type="submit"
+        colorScheme="blackAlpha"
+        className={css.login_form_submit}
+        bg="green.900"
+        color="white"
+      >
         Войти
       </Button>
     </form>

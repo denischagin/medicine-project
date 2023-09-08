@@ -4,6 +4,11 @@
   align-items: center;
   width: 100%;
   padding-top: 40px;
+  padding-bottom: 20px;
+
+  @media screen and (max-width: 600px) {
+    padding-top: 15px;
+  }
 
   h1 {
     text-align: center;
@@ -12,6 +17,11 @@
     font-size: 54px;
     font-weight: 800;
     margin-bottom: 30px;
+
+    @media screen and (max-width: 415px) {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
   }
 
   &_card {
@@ -21,5 +31,21 @@
     border-radius: 15px;
     background-color: white;
     overflow: hidden;
+
+    img {
+      animation: appearance 0.7s ease;
+    }
+  
+    @keyframes appearance {
+      from {
+        filter: blur(20px);
+        opacity: 0;
+      }
+  
+      to {
+        filter: blur(0px);
+        opacity: 1;
+      }
+    }
   }
 }

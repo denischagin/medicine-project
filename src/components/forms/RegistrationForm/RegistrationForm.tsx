@@ -1,14 +1,41 @@
 import { InputPassword } from "@components/ui/InputPassword";
 import { Button, Input } from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { paths } from "@/utlis/constants";
 import css from "./RegistrationForm.module.scss";
+import { FormEventHandler } from "react";
+import { IRegistration } from "@/utlis/models";
+import { useRegistrationMutation } from "@/utlis/hooks";
 
 export const RegistrationForm = () => {
+  const { mutate: registrationMutate, isSuccess } = useRegistrationMutation();
+  const navigate = useNavigate();
+  
+  if (isSuccess) navigate(paths.home, { replace: true });
+
+  const handleFormSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const requestBody: IRegistration = {
+      email: formData.get("email")?.toString()!,
+      password: formData.get("password")?.toString()!,
+      passwordConfirm: formData.get("repeat-password")?.toString()!,
+      birthDate: formData.get("birthday")?.toString()!,
+      firstName: formData.get("name")?.toString()!,
+      lastName: formData.get("surname")?.toString()!,
+      middleName: formData.get("patronymic")?.toString()!,
+      role: "Patient",
+    };
+
+    registrationMutate(requestBody);
+  };
   return (
-    <form className={css.registration_form}>
+    <form className={css.registration_form} onSubmit={handleFormSubmit}>
       <div className={css.registration_field_list}>
         <Input
+          name="email"
           type="email"
           variant="flushed"
           placeholder="Эл.почта"
@@ -18,25 +45,19 @@ export const RegistrationForm = () => {
         />
 
         <InputPassword
+          name="password"
           classNameInputGroup={css.registration_field}
           placeholder="Пароль"
         />
 
         <InputPassword
+          name="repeat-password"
           classNameInputGroup={css.registration_field}
           placeholder="Повторите пароль"
         />
 
         <Input
-          type="text"
-          variant="flushed"
-          placeholder="Повторите пароль"
-          width="100%"
-          className={css.registration_field}
-          required
-        />
-
-        <Input
+          name="surname"
           type="text"
           variant="flushed"
           placeholder="Фамилия"
@@ -46,6 +67,7 @@ export const RegistrationForm = () => {
         />
 
         <Input
+          name="name"
           type="text"
           variant="flushed"
           placeholder="Имя"
@@ -55,6 +77,7 @@ export const RegistrationForm = () => {
         />
 
         <Input
+          name="patronymic"
           type="text"
           variant="flushed"
           placeholder="Отчество"
@@ -64,6 +87,7 @@ export const RegistrationForm = () => {
         />
 
         <Input
+          name="gender"
           type="text"
           variant="flushed"
           placeholder="Пол"
@@ -73,6 +97,8 @@ export const RegistrationForm = () => {
         />
 
         <Input
+          name="birthday"
+          type="date"
           variant="flushed"
           placeholder="Дата рождения"
           width="100%"

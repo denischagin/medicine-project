@@ -10,7 +10,9 @@ export const LoginPage = () => {
     <div className={css.login}>
       <h1>ВХОД</h1>
       <div className={css.login_card}>
-        <Image src={doctorImg} alt="doctor" loading="lazy" />
+        <div className={css.login_card_img}>
+          <Image src={doctorImg} alt="doctor" />
+        </div>
 
         <LoginForm />
       </div>

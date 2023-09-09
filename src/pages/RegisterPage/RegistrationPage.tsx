@@ -10,7 +10,9 @@ export const RegistrationPage = () => {
     <div className={css.registration}>
       <h1>РЕГИСТРАЦИЯ</h1>
       <div className={css.registration_card}>
-        <Image src={doctorImg} loading="lazy" alt="doctor" />
+        <div className={css.registration_card_img}>
+          <Image src={doctorImg} loading="lazy" alt="doctor" />
+        </div>
 
         <RegistrationForm />
       </div>

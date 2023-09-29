@@ -9,7 +9,12 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@assets': path.resolve(__dirname, './src/assets'),
-      '@components': path.resolve(__dirname, './src/components'),
+      '@app': path.resolve(__dirname, './src/components'),
+      '@pages': path.resolve(__dirname, './src/components'),
+      '@widgets': path.resolve(__dirname, './src/components'),
+      '@features': path.resolve(__dirname, './src/components'),
+      '@entities': path.resolve(__dirname, './src/components'),
+      '@shared': path.resolve(__dirname, './src/components'),
     },
   },
   server: {

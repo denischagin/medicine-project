@@ -5,7 +5,7 @@ class HospitalService {
   private BASE = "Hospitals/"
 
   public async getAllHospitals() {
-    const response = await authAxios.get<GetAllHospitalsResponse>(this.BASE + "");
+    const response = await authAxios.get<GetAllHospitalsResponse[]>(this.BASE + "");
     return response.data;
   }
 }

@@ -1,38 +1,45 @@
-import { InputPassword } from "@/shared/ui/InputPassword";
-import { Button, Input } from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { paths } from "@/shared/constants";
-import css from "./RegistrationForm.module.scss";
-import { FormEventHandler } from "react";
-import { IRegistrationCredits } from "@/entities/auth/models";
-import { useRegistrationMutation } from "@/entities/auth";
+import { InputPassword } from '@/shared/ui/input/InputPassword'
+import { Button, Input } from '@chakra-ui/react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { paths } from '@/shared/constants'
+import css from './RegistrationForm.module.scss'
+import { FormEventHandler } from 'react'
+import { IRegistrationCredits } from '@/entities/auth/models'
+import { useRegistrationMutation } from '@/entities/auth'
 
 export const RegistrationForm = () => {
-  const { mutate: registrationMutate, isSuccess, isLoading } = useRegistrationMutation();
-  const navigate = useNavigate();
-  
-  if (isSuccess) navigate(paths.home, { replace: true });
+  const {
+    mutate: registrationMutate,
+    isSuccess,
+    isLoading,
+  } = useRegistrationMutation()
+  const navigate = useNavigate()
+
+  if (isSuccess) navigate(paths.home, { replace: true })
 
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget)
 
     const requestBody: IRegistrationCredits = {
-      email: formData.get("email")?.toString()!,
-      password: formData.get("password")?.toString()!,
-      passwordConfirm: formData.get("repeat-password")?.toString()!,
-      birthDate: formData.get("birthday")?.toString()!,
-      firstName: formData.get("name")?.toString()!,
-      lastName: formData.get("surname")?.toString()!,
-      middleName: formData.get("patronymic")?.toString()!,
-      role: "Patient",
-    };
+      email: formData.get('email')?.toString()!,
+      password: formData.get('password')?.toString()!,
+      passwordConfirm: formData.get('repeat-password')?.toString()!,
+      birthDate: formData.get('birthday')?.toString()!,
+      firstName: formData.get('name')?.toString()!,
+      lastName: formData.get('surname')?.toString()!,
+      middleName: formData.get('patronymic')?.toString()!,
+      role: 'Patient',
+    }
 
-    registrationMutate(requestBody);
-  };
+    registrationMutate(requestBody)
+  }
   return (
-    <form className={css.registration_form} onSubmit={handleFormSubmit}>
+    <form
+      className={css.registration_form}
+      onSubmit={handleFormSubmit}
+    >
       <div className={css.registration_field_list}>
         <Input
           name="email"
@@ -107,7 +114,10 @@ export const RegistrationForm = () => {
         />
       </div>
 
-      <NavLink to={paths.login} className={css.sign_in_link}>
+      <NavLink
+        to={paths.login}
+        className={css.sign_in_link}
+      >
         Уже есть аккаунт?
       </NavLink>
 
@@ -122,5 +132,5 @@ export const RegistrationForm = () => {
         Зарегистрироваться
       </Button>
     </form>
-  );
-};
+  )
+}

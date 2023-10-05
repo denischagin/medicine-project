@@ -1,0 +1,14 @@
+.rating {
+  display: flex;
+
+  &__item {
+    display: flex;
+    overflow: hidden;
+
+    &--half {
+    }
+
+    &--filled {
+    }
+  }
+}

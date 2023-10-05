@@ -1,17 +1,17 @@
-import axios from "axios";
-import { localStorageKeys } from "@/shared/constants";
+import { localStorageKeys } from '@/shared/constants'
+import axios from 'axios'
 
-axios.defaults.baseURL = "https://localhost:5000/api/";
-export const authApi = axios.create();
+axios.defaults.baseURL = 'http://localhost:5000/api/'
+export const authApi = axios.create()
 
 authApi.interceptors.request.use(
   (config) => {
-    localStorage.getItem(localStorageKeys.tokens);
+    localStorage.getItem(localStorageKeys.tokens)
 
-    return config;
+    return config
   },
-  (error) => {}
-);
+  (error) => {},
+)
 
-export default axios;
+export default axios
 export const authAxios = authApi

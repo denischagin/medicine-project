@@ -1,34 +1,37 @@
-import { InputPassword } from "@/shared/ui/InputPassword";
-import { paths } from "@/shared/constants";
-import { Button, Input } from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
-import css from "./LoginForm.module.scss";
-import { FormEventHandler } from "react";
-import { ILoginCredits } from "@/entities/auth/models";
-import { useLoginMutation } from "@/entities/auth";
+import { InputPassword } from '@/shared/ui/input/InputPassword'
+import { paths } from '@/shared/constants'
+import { Button, Input } from '@chakra-ui/react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import css from './LoginForm.module.scss'
+import { FormEventHandler } from 'react'
+import { ILoginCredits } from '@/entities/auth/models'
+import { useLoginMutation } from '@/entities/auth'
 
 export const LoginForm = () => {
-  const { mutate: loginMutate, isSuccess, isLoading } = useLoginMutation();
-  const navigate = useNavigate();
-  
-  if (isSuccess) navigate(paths.home, { replace: true });
+  const { mutate: loginMutate, isSuccess, isLoading } = useLoginMutation()
+  const navigate = useNavigate()
+
+  if (isSuccess) navigate(paths.home, { replace: true })
 
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget)
 
     const requestBody: ILoginCredits = {
-      email: formData.get("email")?.toString()!,
-      password: formData.get("password")?.toString()!,
-      role: "Patient",
-    };
+      email: formData.get('email')?.toString()!,
+      password: formData.get('password')?.toString()!,
+      role: 'Patient',
+    }
 
-    loginMutate(requestBody);
-  };
+    loginMutate(requestBody)
+  }
 
   return (
-    <form className={css.login_form} onSubmit={handleFormSubmit}>
+    <form
+      className={css.login_form}
+      onSubmit={handleFormSubmit}
+    >
       <Input
         type="email"
         variant="flushed"
@@ -45,7 +48,10 @@ export const LoginForm = () => {
         name="password"
       />
 
-      <NavLink to={paths.register} className={css.sign_up_link}>
+      <NavLink
+        to={paths.register}
+        className={css.sign_up_link}
+      >
         Нет аккаунта?
       </NavLink>
 
@@ -60,5 +66,5 @@ export const LoginForm = () => {
         Войти
       </Button>
     </form>
-  );
-};
+  )
+}

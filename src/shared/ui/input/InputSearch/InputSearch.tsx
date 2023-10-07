@@ -12,6 +12,7 @@ export const InputSearch = ({
       borderColor="blackAlpha.900"
       borderRadius="2xl"
       backgroundColor="whiteAlpha.600"
+      maxW="946px"
       {...inputGroupProps}
     >
       <Input {...inputProps} />

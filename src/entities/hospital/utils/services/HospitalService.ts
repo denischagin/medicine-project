@@ -1,12 +1,5 @@
 import { authAxios } from '@/shared/utils/axios/api'
-import { GetAllHospitalsResponse } from '../../models'
-
-interface GetAllhospitalsParams {
-  cityId?: number
-  name?: string
-  minRating?: number
-  maxRating?: number
-}
+import { GetAllHospitalsResponse, GetAllhospitalsParams } from '../../models'
 
 class HospitalService {
   private BASE = 'Hospitals/'

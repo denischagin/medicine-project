@@ -1,4 +1,4 @@
-@import "../../../app/styles/variables.scss";
+@import '@/app/styles/variables.scss';
 
 .header {
   display: flex;
@@ -27,6 +27,7 @@
   .nav {
     display: flex;
     align-items: center;
+
     .menu {
       display: flex;
       align-items: center;

@@ -1,1 +1,1 @@
-export type { GetAllHospitalsResponse } from "./api-reponses";
+export type * from './api'

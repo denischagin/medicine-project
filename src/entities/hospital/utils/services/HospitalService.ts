@@ -1,5 +1,9 @@
 import { authAxios } from '@/shared/utils/axios/api'
-import { GetAllHospitalsResponse, GetAllhospitalsParams } from '../../models'
+import {
+  GetAllHospitalsResponse,
+  GetAllhospitalsParams,
+  GetHospitalByIdResponse,
+} from '../../models'
 
 class HospitalService {
   private BASE = 'Hospitals/'
@@ -8,6 +12,13 @@ class HospitalService {
     const response = await authAxios.get<GetAllHospitalsResponse[]>(this.BASE, {
       params,
     })
+    return response.data
+  }
+
+  public async getHospitalById(hospitalId: number) {
+    const response = await authAxios.get<GetHospitalByIdResponse>(
+      `${this.BASE}${hospitalId}`,
+    )
     return response.data
   }
 }

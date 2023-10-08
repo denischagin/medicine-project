@@ -1,27 +1,32 @@
 import { HospitalRating } from '@/shared/ui/rating/HospitalRating'
-import { Button, Image } from '@chakra-ui/react'
+import { Image } from '@chakra-ui/react'
 import defaultHospital from '@/entities/hospital/assets/img/default-hospital.png'
+import defaultHospitalSvg from '@/entities/hospital/assets/svg/camera.svg'
+
 import css from './HospitalRatingCard.module.scss'
 import { MouseEventHandler } from 'react'
-
-interface HospitalRatingCardProps {
-  name: string
-  description: string
-  rating: number
-}
+import { HospitalRatingCardProps } from './HospitalRatingCard.interface'
+import { StyledButton } from '@/shared/ui/button/StyledButton/StyledButton'
+import { useNavigate } from 'react-router'
+import { paths } from '@/shared/constants'
+import { AvatarHospital } from '@/shared/ui/avatar/AvatarHospital/AvatarHospital'
 
 export const HospitalRatingCard = ({
+  id,
   name,
   rating,
-  description,
+  address: description,
 }: HospitalRatingCardProps) => {
+  const navigate = useNavigate()
+
   const handleShowMoreInfo: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
+    navigate(paths.hospitalsCardById(id))
   }
 
   return (
     <div className={css.hospital_card}>
-      <Image src={defaultHospital} />
+      <AvatarHospital />
 
       <div className={css.hospital_card__content}>
         <div className={css.hospital_card__title_wrapper}>
@@ -32,12 +37,7 @@ export const HospitalRatingCard = ({
         <div className={css.hospital_card__section}>
           <HospitalRating rating={rating} />
 
-          <Button
-            className={css.hospital_card__button}
-            onClick={handleShowMoreInfo}
-          >
-            Подробнее
-          </Button>
+          <StyledButton onClick={handleShowMoreInfo}>Подробнее</StyledButton>
         </div>
       </div>
     </div>

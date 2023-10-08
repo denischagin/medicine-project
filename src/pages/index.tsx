@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router";
 import { paths } from "@/shared/constants";
 import { Layout } from "@/app/layout/ui/Layout";
 import { HospitalsPage } from "./HospitalsPage/HospitalsPage";
+import { HospitalCardPage } from "./HospitalCardPage";
 
 export const Routing = () => {
   return (
@@ -11,7 +12,8 @@ export const Routing = () => {
       <Route path="/" element={<Layout />}>
         <Route path={paths.login} element={<LoginPage />} />
         <Route path={paths.register} element={<RegistrationPage />} />
-        <Route path={paths.hospital} element={<HospitalsPage />} />
+        <Route path={paths.hospitals} element={<HospitalsPage />} />
+        <Route path={paths.hospitalCard()} element={<HospitalCardPage />} />
       </Route>
     </Routes>
   );

@@ -1,0 +1,1 @@
+export { AvatarHospital } from './AvatarHospital'

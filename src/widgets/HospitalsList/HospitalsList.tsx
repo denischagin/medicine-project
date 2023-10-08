@@ -1,7 +1,8 @@
 import { HospitalRatingCard } from '@/entities/hospital/ui/HospitalRatingCard'
-import { Progress, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { HospitalsListProps } from './HospitalsList.interface'
 import css from './HospitalsList.module.scss'
+import { ProgressLoader } from '@/shared/ui/loader'
 
 export const HospitalsList = ({
   hospitals,
@@ -12,25 +13,27 @@ export const HospitalsList = ({
   return (
     <div className={css.hospitals_list}>
       <div className={css.hospitals_list__wrapper}>
-        {isLoading && (
-          <Progress
-            isIndeterminate
-            colorScheme="green"
-            size="sm"
-          />
-        )}
+        {isLoading && <ProgressLoader />}
 
         {isSuccess &&
-          hospitals.map(({ id, name, description, rating }) => (
+          hospitals.map(({ id, name, address, rating }) => (
             <HospitalRatingCard
               key={id}
-              description={name}
-              name={description}
+              id={id}
+              address={address}
+              name={name}
               rating={rating}
             />
           ))}
 
-        {isError && <Text>Возникла ошибка</Text>}
+        {isError && (
+          <Text
+            fontSize="3xl"
+            color="tomato"
+          >
+            Возникла ошибка
+          </Text>
+        )}
       </div>
     </div>
   )

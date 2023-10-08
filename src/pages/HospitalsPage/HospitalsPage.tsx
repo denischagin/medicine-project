@@ -2,10 +2,10 @@ import { useGetAllHospitalsQuery } from '@/entities/hospital/utils'
 import { useDebounce } from '@/shared/utils/hooks'
 import { HospitalsList } from '@/widgets/HospitalsList/HospitalsList'
 
-import { Container } from '@chakra-ui/react'
 import { ChangeEvent, useState } from 'react'
 import { InputSearch } from '../../shared/ui/input/InputSearch'
 import css from './HospitalsPage.module.scss'
+import { MainContainer } from '@/shared/ui/container'
 
 export const HospitalsPage = () => {
   const [search, setSearch] = useState('')
@@ -24,7 +24,7 @@ export const HospitalsPage = () => {
 
   return (
     <div className={css.hospitals}>
-      <Container maxW="1500px" className={css.hospitals__container}>
+      <MainContainer className={css.hospitals__container}>
         <InputSearch
           inputProps={{
             onChange: handleChangeSearch,
@@ -40,7 +40,7 @@ export const HospitalsPage = () => {
           isSuccess={isSuccess}
           isLoading={isFetching}
         />
-      </Container>
+      </MainContainer>
     </div>
   )
 }

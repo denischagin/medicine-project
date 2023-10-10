@@ -1,29 +1,30 @@
 import { useParams } from 'react-router'
 import css from './HospitalCardPage.module.scss'
 import { useGetHospitalById } from '@/entities/hospital/utils/hooks/get-hospital-by-id'
-import { ProgressLoader } from '@/shared/ui/loader'
-import { Text } from '@chakra-ui/react'
 import { MainContainer } from '@/shared/ui/container'
+import { AvatarHospital } from '@/shared/ui/avatar/AvatarHospital'
+import { Text } from '@chakra-ui/react'
 
 export const HospitalCardPage = () => {
   const { hospitalId } = useParams()
 
-  const {
-    data: hospital,
-    isError,
-    isFetching,
-    isSuccess,
-  } = useGetHospitalById(Number(hospitalId))
+  const { data: hospital } = useGetHospitalById(Number(hospitalId))
 
   return (
-    <div className={css.hospital_card}>
+    <section className={css.hospital_card}>
       <MainContainer>
-        {isSuccess && <>{JSON.stringify(hospital)}</>}
+        <div className={css.hospital_card__content}>
+          <div className={css.hospital_card__title_wrapper}>
+            <AvatarHospital />
 
-        {isFetching && <ProgressLoader />}
+            <div className={css.hospital_card__description}>
+              <Text fontSize="3xl">{hospital?.name}</Text>
 
-        {isError && <Text color="tomato">Возникла ошибка</Text>}
+              <Text>{hospital?.description}</Text>
+            </div>
+          </div>
+        </div>
       </MainContainer>
-    </div>
+    </section>
   )
 }

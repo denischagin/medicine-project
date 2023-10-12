@@ -3,27 +3,36 @@ import { Text } from '@chakra-ui/react'
 import { HospitalsListProps } from './HospitalsList.interface'
 import css from './HospitalsList.module.scss'
 import { ProgressLoader } from '@/shared/ui/loader'
+import { useGetAllHospitalsQuery } from '@/entities/hospital'
 
-export const HospitalsList = ({
-  hospitals,
-  isError,
-  isLoading,
-  isSuccess,
-}: HospitalsListProps) => {
+export const HospitalsList = ({ search }: HospitalsListProps) => {
+  const {
+    isLoading,
+    isError,
+    isSuccess,
+    data: hospitals,
+  } = useGetAllHospitalsQuery(search)
+
+  const isHospitalsEmpty = hospitals?.length === 0
+
   return (
     <div className={css.hospitals_list}>
       <div className={css.hospitals_list__wrapper}>
         {isLoading && <ProgressLoader />}
 
         {isSuccess &&
-          hospitals.map(({ id, name, address, rating }) => (
-            <HospitalRatingCard
-              key={id}
-              id={id}
-              address={address}
-              name={name}
-              rating={rating}
-            />
+          (isHospitalsEmpty ? (
+            <Text>Список больниц пустой</Text>
+          ) : (
+            hospitals.map(({ id, name, address, rating }) => (
+              <HospitalRatingCard
+                key={id}
+                id={id}
+                address={address}
+                name={name}
+                rating={rating}
+              />
+            ))
           ))}
 
         {isError && (
@@ -31,7 +40,7 @@ export const HospitalsList = ({
             fontSize="3xl"
             color="tomato"
           >
-            Возникла ошибка
+            Возникла ошибка загрузки больниц
           </Text>
         )}
       </div>

@@ -11,12 +11,7 @@ export const HospitalsPage = () => {
   const [search, setSearch] = useState('')
   const debounceSearch = useDebounce(search, 300)
 
-  const {
-    data: hospitals = [],
-    isFetching,
-    isSuccess,
-    isError,
-  } = useGetAllHospitalsQuery(debounceSearch)
+  useGetAllHospitalsQuery(debounceSearch)
 
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
@@ -30,16 +25,11 @@ export const HospitalsPage = () => {
             onChange: handleChangeSearch,
           }}
           inputGroupProps={{
-            className: css.hospitals__search
+            className: css.hospitals__search,
           }}
         />
 
-        <HospitalsList
-          hospitals={hospitals}
-          isError={isError}
-          isSuccess={isSuccess}
-          isLoading={isFetching}
-        />
+        <HospitalsList search={debounceSearch} />
       </MainContainer>
     </div>
   )

@@ -1,6 +1,8 @@
 @import '@/app/styles/variables.scss';
 
 .hospitals_list {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
   width: 100%;
 
@@ -9,14 +11,14 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.404);
+  margin-bottom: 20px;
 
   &__wrapper {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     align-items: center;
     overflow-y: scroll;
-    min-height: 750px;
-    max-height: 800px;
     padding: 10px 6px 10px 6px;
     gap: 11px;
     border-radius: 10px;

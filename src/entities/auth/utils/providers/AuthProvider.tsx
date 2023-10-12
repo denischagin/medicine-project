@@ -15,7 +15,7 @@ interface ITokens {
 
 export const AuthProvider = (props: AuthProviderProps) => {
     const [isAuth, setIsAuth] = useState(false);
-    const {value: tokensJSON, setItem} = useLocalStorage(
+    const {value: tokensJSON, setItem, removeItem} = useLocalStorage(
         localStorageKeys.tokens
     );
 
@@ -46,6 +46,7 @@ export const AuthProvider = (props: AuthProviderProps) => {
 
     const logout = () => {
         setIsAuth(false);
+        removeItem()
     };
 
     return (

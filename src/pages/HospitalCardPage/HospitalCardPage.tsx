@@ -8,7 +8,11 @@ import { Text } from '@chakra-ui/react'
 export const HospitalCardPage = () => {
   const { hospitalId } = useParams()
 
-  const { data: hospital } = useGetHospitalById(Number(hospitalId))
+  const { data: hospital, isSuccess } = useGetHospitalById(Number(hospitalId))
+
+  if (!isSuccess) return <Text color="tomato">Возникла ошибка</Text>
+
+  const { description, name } = hospital
 
   return (
     <section className={css.hospital_card}>
@@ -18,9 +22,9 @@ export const HospitalCardPage = () => {
             <AvatarHospital />
 
             <div className={css.hospital_card__description}>
-              <Text fontSize="3xl">{hospital?.name}</Text>
+              <Text fontSize="3xl">{name}</Text>
 
-              <Text>{hospital?.description}</Text>
+              <Text>{description}</Text>
             </div>
           </div>
         </div>

@@ -1,8 +1,7 @@
 import { InputPassword } from "@/shared/ui/input/InputPassword";
 import { paths } from "@/shared/constants";
 import { Button, Input, VStack } from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
-import css from "./LoginForm.module.scss";
+import { useNavigate } from "react-router-dom";
 import { FormEventHandler } from "react";
 import { ILoginCredits } from "@/entities/auth/models";
 import { useLoginMutation } from "@/entities/auth";
@@ -37,7 +36,7 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <VStack as="form" p={["3", "9"]} pt="6">
+      <VStack p={["3", "9"]} pt="6">
         <VStack spacing={6} w="100%">
           <Input
             type="email"

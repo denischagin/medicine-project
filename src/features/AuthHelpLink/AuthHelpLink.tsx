@@ -9,7 +9,6 @@ export const AuthHelpLink = ({ text, to }: AuthHelpLinkProps) => {
       fontSize="xl"
       alignSelf="flex-end"
       mt={["4", "7"]}
-      mb="9"
     >
       <NavLink to={to}>{text}</NavLink>
     </Text>

@@ -45,14 +45,13 @@ export const RegistrationForm = () => {
   };
   return (
     <form onSubmit={handleFormSubmit}>
-      <VStack as="form" p={["3", "9"]} pt="6">
+      <VStack p={["3", "9"]} pt="6">
         <VStack spacing={6} w="100%">
           <Input
             name="email"
             type="email"
             variant="underline"
             placeholder="Эл.почта"
-            required
           />
 
           <InputPassword
@@ -72,7 +71,6 @@ export const RegistrationForm = () => {
             type="text"
             variant="underline"
             placeholder="Фамилия"
-            required
           />
 
           <Input
@@ -80,7 +78,6 @@ export const RegistrationForm = () => {
             type="text"
             variant="underline"
             placeholder="Имя"
-            required
           />
 
           <Input
@@ -89,7 +86,6 @@ export const RegistrationForm = () => {
             variant="underline"
             placeholder="Отчество"
             width="100%"
-            required
           />
 
           <Input
@@ -97,7 +93,6 @@ export const RegistrationForm = () => {
             type="text"
             variant="underline"
             placeholder="Пол"
-            required
           />
 
           <Input
@@ -105,20 +100,6 @@ export const RegistrationForm = () => {
             type="date"
             variant="underline"
             placeholder="Дата рождения"
-            required
-          />
-          
-          <Input
-            type="email"
-            name="email"
-            placeholder="Эл.почта / Номер телефона"
-            variant="underline"
-          />
-
-          <InputPassword
-            placeholder="Пароль"
-            name="password"
-            variant="underline"
           />
         </VStack>
 
@@ -130,7 +111,7 @@ export const RegistrationForm = () => {
           isLoading={isLoading}
           mt="10"
         >
-          Войти
+          Зарегистрироваться
         </Button>
       </VStack>
     </form>

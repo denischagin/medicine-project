@@ -4,15 +4,17 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import { AuthProvider } from '@/entities/auth'
+import theme from '../theme'
 
 export interface ProvidersProps {
   children: ReactNode
 }
+
 export const Providers = ({ children }: ProvidersProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <AuthProvider>{children}</AuthProvider>
         </ChakraProvider>
       </BrowserRouter>

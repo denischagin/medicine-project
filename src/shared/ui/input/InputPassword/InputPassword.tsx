@@ -26,12 +26,12 @@ export const InputPassword = ({
   return (
     <InputGroup className={classNameInputGroup}>
       <Input
-        {...restProps}
         type={isShowPassword ? "text" : "password"}
         variant="flushed"
         size="md"
         width="100%"
         required
+        {...restProps}
       />
 
       <InputRightElement onClick={handleToogleShowPassword}>

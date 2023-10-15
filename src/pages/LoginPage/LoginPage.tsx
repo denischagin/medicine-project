@@ -1,19 +1,25 @@
 import { AuthCard } from "@/entities/auth";
-import css from "./LoginPage.module.scss";
 
 import { LoginWithEsia } from "@/features/LoginWithEsia";
 import { LoginForm } from "@/widgets/LoginForm";
+import { Heading, VStack } from "@chakra-ui/react";
 
 export const LoginPage = () => {
   return (
-    <div className={css.login}>
-      <h1>ВХОД</h1>
+    <VStack pt={["3", "10"]} pb="5" w="100%" alignItems="center">
+      <Heading
+        fontSize={["30px", "50px"]}
+        mb={["10px", "15px"]}
+        color="blackAlpha.800"
+      >
+        ВХОД
+      </Heading>
 
       <AuthCard>
-        <LoginForm />  
-      </AuthCard> 
+        <LoginForm />
+      </AuthCard>
 
       <LoginWithEsia />
-    </div>
+    </VStack>
   );
 };

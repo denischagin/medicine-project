@@ -1,93 +1,60 @@
-import { NavLink } from 'react-router-dom'
-import css from './Header.module.scss'
-import { paths } from '@/shared/constants'
+import { NavLink } from "react-router-dom";
+import { paths } from "@/shared/constants";
 import {
-  Divider,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
+  Text,
   IconButton,
-  VStack,
-  Image
-} from '@chakra-ui/react'
-import { useState } from 'react'
-import { menuLinks } from '../../constants'
-import burgerIcon from '@/widgets/Header/assets/svg/menu-burger-button.svg'
+  Image,
+  Flex,
+  Heading,
+  HStack,
+  Box,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import burgerIcon from "@/widgets/Header/assets/svg/menu-burger-button.svg";
+import { DrawerMenu } from "../DrawerMenu";
 
 export const Header = () => {
-  const [isOpenDrawer, setIsOpenDrawer] = useState(false)
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
 
-  const handleCloseDrawer = () => setIsOpenDrawer(false)
-  const handleOpenDrawer = () => setIsOpenDrawer(true)
+  const handleCloseDrawer = () => setIsOpenDrawer(false);
+  const handleOpenDrawer = () => setIsOpenDrawer(true);
 
   return (
     <>
-      <header className={css.header}>
-        <h2>D-Pro</h2>
-
-        <nav className={css.nav}>
-          <ul className={css.menu}>
-            <li>
-              <NavLink to={paths.login}>Вход</NavLink>
-            </li>
-
-            <li>
-              <NavLink to={paths.register}>Регистрация</NavLink>
-            </li>
-          </ul>
-        </nav>
-
-    <IconButton
-      className={css.burger_button}
-      aria-label="menu"
-      onClick={handleOpenDrawer}
-      variant="ghost"
-      isRound
-      _hover={{
-        backgroundColor: 'green',
-      }}
-    >
-      <Image src={burgerIcon} />
-    </IconButton>
-      </header>
-
-      <Drawer
-        isOpen={isOpenDrawer}
-        onClose={handleCloseDrawer}
-        placement="left"
+      <Flex
+        as="header"
+        justifyContent="space-between"
+        alignItems="center"
+        py={["2px", "10px"]}
+        px="26px"
+        flexDirection={["row-reverse", "row"]}
+        bg="green.600"
       >
-        <DrawerOverlay />
+        <Heading color="white">D-Pro</Heading>
 
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth="3px">Навигация</DrawerHeader>
+        <Box as="nav" display={["none", "block"]}>
+          <HStack as="ul" spacing={5}>
+            <Text color="white" fontSize="xl" as="li">
+              <NavLink to={paths.login}>Вход</NavLink>
+            </Text>
 
-          <DrawerBody>
-            <VStack
-              as="ul"
-              alignItems="start"
-              spacing={2}
-            >
-              {menuLinks.map(({ path, title }) => (
-                <>
-                  <li>
-                    <NavLink
-                      to={path}
-                      onClick={handleCloseDrawer}
-                    >
-                      {title}
-                    </NavLink>
-                  </li>
-                  <Divider />
-                </>
-              ))}
-            </VStack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+            <Text color="white" fontSize="xl" as="li">
+              <NavLink to={paths.register}>Регистрация</NavLink>
+            </Text>
+          </HStack>
+        </Box>
+
+        <IconButton
+          aria-label="menu"
+          onClick={handleOpenDrawer}
+          variant="iconButton"
+          display={["inline-block", "none"]}
+        >
+          <Image src={burgerIcon} />
+        </IconButton>
+      </Flex>
+
+      <DrawerMenu isOpen={isOpenDrawer} onClose={handleCloseDrawer} />
     </>
-  )
-}
+  );
+};

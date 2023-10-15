@@ -1,23 +1,31 @@
 import doctorImg from '@/shared/assets/img/doctor-img.png'
-import { Image } from '@chakra-ui/react'
-import { ReactNode } from 'react'
-import css from './style.module.scss'
-
-interface AuthCardProps {
-  children: ReactNode
-}
+import { AspectRatio, Box, Image } from '@chakra-ui/react'
+import { AuthCardProps } from './AuthCard.interface'
 
 export const AuthCard = ({ children }: AuthCardProps) => {
   return (
-    <div className={css.auth_card}>
-      <div className={css.auth_card_img}>
+    <Box
+      my={0}
+      mx="auto"
+      boxShadow="0px 4px 4px 0px rgba(0, 0, 0, 0.25)"
+      bg="white"
+      maxW="467px"
+      overflow="hidden"
+      w="100%"
+      borderRadius="lg"
+    >
+      <AspectRatio
+        maxW="467px"
+        ratio={10 / 6}
+      >
         <Image
           src={doctorImg}
           alt="doctor"
+          objectFit="cover"
         />
-      </div>
+      </AspectRatio>
 
       {children}
-    </div>
+    </Box>
   )
 }

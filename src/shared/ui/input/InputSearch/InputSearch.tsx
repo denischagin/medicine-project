@@ -9,13 +9,14 @@ export const InputSearch = ({
 }: InputSearchProps) => {
   return (
     <InputGroup
-      borderColor="blackAlpha.900"
-      borderRadius="2xl"
-      backgroundColor="whiteAlpha.600"
       maxW="946px"
+      variant="outlined"
       {...inputGroupProps}
     >
-      <Input {...inputProps} />
+      <Input
+        type="search"
+        {...inputProps}
+      />
 
       <InputRightElement>
         {isLoading ? (

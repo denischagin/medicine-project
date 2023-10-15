@@ -6,9 +6,11 @@ import css from './LoginForm.module.scss'
 import { FormEventHandler } from 'react'
 import { ILoginCredits } from '@/entities/auth/models'
 import { useLoginMutation } from '@/entities/auth'
+import { useAuth } from '@/entities/auth/utils/hooks/use-auth'
 
 export const LoginForm = () => {
   const { mutate: loginMutate, isSuccess, isLoading } = useLoginMutation()
+  const { login } = useAuth()
   const navigate = useNavigate()
 
   if (isSuccess) navigate(paths.home, { replace: true })
@@ -24,7 +26,12 @@ export const LoginForm = () => {
       role: 'Patient',
     }
 
-    loginMutate(requestBody)
+    loginMutate(requestBody, {
+      onSuccess: ({ refreshToken, token }) => {
+        login(token, refreshToken)
+        navigate(paths.hospitals, { replace: true })
+      },
+    })
   }
 
   return (

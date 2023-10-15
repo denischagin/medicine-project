@@ -1,5 +1,5 @@
 import { ILoginCredits } from "@/entities/auth/models";
-import ViewerService from "@/entities/auth/utils/services/AuthService";
+import AuthService from "@/entities/auth/utils/services/AuthService";
 import { useToast } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
@@ -8,7 +8,7 @@ export const useLoginMutation = () => {
   const toast = useToast()
 
   return useMutation({
-    mutationFn: (credits: ILoginCredits) => ViewerService.login(credits),
+    mutationFn: (credits: ILoginCredits) => AuthService.login(credits),
     
     onError: (error: AxiosError) => {
       toast({

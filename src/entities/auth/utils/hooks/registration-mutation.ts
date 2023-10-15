@@ -1,5 +1,5 @@
 import { IRegistrationCredits } from "@/entities/auth/models";
-import ViewerService from "@/entities/auth/utils/services/AuthService";
+import AuthService from "@/entities/auth/utils/services/AuthService";
 import { useToast } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
@@ -9,7 +9,7 @@ export const useRegistrationMutation = () => {
 
   return useMutation({
     mutationFn: (credits: IRegistrationCredits) =>
-      ViewerService.registration(credits),
+      AuthService.registration(credits),
 
     onError: (error: AxiosError) => {
       toast({

@@ -8,7 +8,7 @@ import {
   IRefreshResponse,
 } from "@/entities/auth/models";
 
-class ViewerService {
+class AuthService {
   private BASE = "Accounts/";
 
   public async login(credits: ILoginCredits) {
@@ -43,4 +43,4 @@ class ViewerService {
   }
 }
 
-export default new ViewerService();
+export default new AuthService();

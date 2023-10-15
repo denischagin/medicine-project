@@ -6,6 +6,7 @@ import css from './RegistrationForm.module.scss'
 import { FormEventHandler } from 'react'
 import { IRegistrationCredits } from '@/entities/auth/models'
 import { useRegistrationMutation } from '@/entities/auth'
+import { useAuth } from '@/entities/auth/utils/hooks/use-auth'
 
 export const RegistrationForm = () => {
   const {
@@ -16,6 +17,7 @@ export const RegistrationForm = () => {
   const navigate = useNavigate()
 
   if (isSuccess) navigate(paths.home, { replace: true })
+  const { login } = useAuth()
 
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -33,7 +35,12 @@ export const RegistrationForm = () => {
       role: 'Patient',
     }
 
-    registrationMutate(requestBody)
+    registrationMutate(requestBody, {
+      onSuccess: ({ refreshToken, token }) => {
+        login(token, refreshToken)
+        navigate(paths.hospitals, { replace: true })
+      },
+    })
   }
   return (
     <form

@@ -1,24 +1,15 @@
-import { queryKeys } from '@/shared/constants/queryKeys'
-import { useQuery } from '@tanstack/react-query'
-import HospitalService from '../services/HospitalService'
+import { queryKeys } from "@/shared/constants/queryKeys";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
+import HospitalService from "../services/HospitalService";
+import { GetAllHospitalsResponse, GetAllhospitalsParams } from "../../models";
+import { AxiosError } from "axios";
 
 export const useGetAllHospitalsQuery = (
-  searchCity: string,
-  cityId: number = 5,
-  maxRating?: number,
-  minRating?: number,
+  args: GetAllhospitalsParams,
+  options?: UseQueryOptions<GetAllHospitalsResponse[], AxiosError>
 ) =>
   useQuery({
-    queryKey:
-      searchCity === ''
-        ? [queryKeys.getAllHospitals]
-        : [queryKeys.getAllHospitals, searchCity],
-
-    queryFn: () =>
-      HospitalService.getAllHospitalsByParams({
-        name: searchCity === '' ? undefined : searchCity,
-        cityId,
-        maxRating,
-        minRating,
-      }),
-  })
+    queryKey: [queryKeys.getAllHospitals, ...Object.values(args)],
+    queryFn: () => HospitalService.getAllHospitalsByParams(args),
+    ...options,
+  });

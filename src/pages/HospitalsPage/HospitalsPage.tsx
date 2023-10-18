@@ -1,21 +1,23 @@
-import { useGetAllHospitalsQuery } from '@/entities/hospital/utils'
-import { useDebounce } from '@/shared/utils/hooks'
-import { HospitalsList } from '@/widgets/HospitalsList/HospitalsList'
+import { useGetAllHospitalsQuery } from "@/entities/hospital/utils";
+import { useDebounce } from "@/shared/utils/hooks";
+import { HospitalsList } from "@/widgets/HospitalsList/HospitalsList";
 
-import { ChangeEvent, useState } from 'react'
-import { InputSearch } from '../../shared/ui/input/InputSearch'
-import css from './HospitalsPage.module.scss'
-import { MainContainer } from '@/shared/ui/container'
+import { ChangeEvent, useState } from "react";
+import { InputSearch } from "../../shared/ui/input/InputSearch";
+import css from "./HospitalsPage.module.scss";
+import { MainContainer } from "@/shared/ui/container";
 
 export const HospitalsPage = () => {
-  const [search, setSearch] = useState('')
-  const debounceSearch = useDebounce(search, 300)
+  const [search, setSearch] = useState("");
+  const debounceSearch = useDebounce(search, 300);
 
-  useGetAllHospitalsQuery(debounceSearch)
+  useGetAllHospitalsQuery({
+    name: debounceSearch,
+  });
 
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
-  }
+    setSearch(e.target.value);
+  };
 
   return (
     <div className={css.hospitals}>
@@ -32,5 +34,5 @@ export const HospitalsPage = () => {
         <HospitalsList search={debounceSearch} />
       </MainContainer>
     </div>
-  )
-}
+  );
+};

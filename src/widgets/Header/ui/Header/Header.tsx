@@ -8,6 +8,9 @@ import {
   Heading,
   HStack,
   Box,
+  Button,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import burgerIcon from "@/widgets/Header/assets/svg/menu-burger-button.svg";
@@ -15,6 +18,8 @@ import { DrawerMenu } from "../DrawerMenu";
 
 export const Header = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const { toggleColorMode, colorMode } = useColorMode();
+  const headerBg = useColorModeValue("green.500", "green.700");
 
   const handleCloseDrawer = () => setIsOpenDrawer(false);
   const handleOpenDrawer = () => setIsOpenDrawer(true);
@@ -28,7 +33,7 @@ export const Header = () => {
         py={["2px", "10px"]}
         px="26px"
         flexDirection={["row-reverse", "row"]}
-        bg="green.600"
+        bg={headerBg}
       >
         <Heading color="white">D-Pro</Heading>
 
@@ -41,13 +46,17 @@ export const Header = () => {
             <Text color="white" fontSize="xl" as="li">
               <NavLink to={paths.register}>Регистрация</NavLink>
             </Text>
+
+            <Button onClick={toggleColorMode}>
+              Поменять тему на {colorMode === "light" ? "темную" : "светлую"}
+            </Button>
           </HStack>
         </Box>
 
         <IconButton
           aria-label="menu"
           onClick={handleOpenDrawer}
-          variant="iconButton"
+          variant="icon"
           display={["inline-block", "none"]}
         >
           <Image src={burgerIcon} />

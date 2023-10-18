@@ -6,7 +6,7 @@ import {
   Image,
   InputProps,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 
 import eye from './svgs/eye.svg'
 import eyeOff from './svgs/eye-off.svg'
@@ -15,10 +15,10 @@ interface InputPasswordProps extends InputProps {
   classNameInputGroup?: string;
 }
 
-export const InputPassword = ({
+export const InputPassword = forwardRef(({
   classNameInputGroup,
   ...restProps
-}: InputPasswordProps) => {
+}: InputPasswordProps, ref) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   const handleToogleShowPassword = () => setIsShowPassword((prev) => !prev);
@@ -27,10 +27,7 @@ export const InputPassword = ({
     <InputGroup className={classNameInputGroup}>
       <Input
         type={isShowPassword ? "text" : "password"}
-        variant="flushed"
-        size="md"
-        width="100%"
-        required
+        ref={ref}
         {...restProps}
       />
 
@@ -41,4 +38,4 @@ export const InputPassword = ({
       </InputRightElement>
     </InputGroup>
   );
-};
+});

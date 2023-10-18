@@ -1,4 +1,4 @@
-import {AuthContext} from "@/entities/auth/context";
+import {AuthContext} from "@/entities/auth/utils/context";
 import {ReactNode, useEffect, useState} from "react";
 import {localStorageKeys} from "@/shared/constants";
 import {useLocalStorage} from "@/shared/utils/hooks";

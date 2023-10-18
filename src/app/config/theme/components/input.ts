@@ -24,6 +24,13 @@ const underline = definePartsStyle({
       borderBottom: "2px solid",
       borderBottomColor: "teal.600",
     },
+    _dark: {
+      bg: "gray.700",
+      color: "whiteAlpha.800",
+      _placeholder: {
+        color: "whiteAlpha.500"
+      }
+    }
   },
 });
 

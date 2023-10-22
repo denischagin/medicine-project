@@ -1,10 +1,31 @@
 import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
 
+// sizes
+const small = defineStyle({
+  py: "5px",
+  px: "10px",
+  minW: "100px",
+  fontSize: "lg",
+});
+
+const medium = defineStyle({
+  py: "10px",
+  px: "20px",
+  minW: "200px",
+  fontSize: "xl",
+});
+
+const large = defineStyle({
+  py: "15px",
+  px: "25px",
+  minW: "250px",
+  fontSize: "2xl",
+});
+
 // variants
 const primary = defineStyle({
   bg: "green.900",
   color: "white",
-  w: "230px",
   borderRadius: "md",
   _hover: {
     bg: "green.800",
@@ -19,13 +40,10 @@ const icon = defineStyle({
 });
 
 const secondary = defineStyle({
-  py: "3px",
-  px: "20px",
   bg: "whiteAlpha.900",
   color: "blackAlpha.700",
   borderRadius: "md",
   boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-  fontSize: "xl",
   fontWeight: "500",
   _hover: {
     bg: "whiteAlpha.800",
@@ -39,4 +57,6 @@ const secondary = defineStyle({
 
 export const buttonTheme = defineStyleConfig({
   variants: { primary, icon, secondary },
+  sizes: { small, large, medium },
+  defaultProps: { variant: "primary" },
 });

@@ -1,4 +1,4 @@
-import { defineStyleConfig, defineStyle } from "@chakra-ui/react";
+import { defineStyleConfig } from "@chakra-ui/react";
 
 export const headingTheme = defineStyleConfig({
   defaultProps: {
@@ -7,7 +7,7 @@ export const headingTheme = defineStyleConfig({
   },
   sizes: {
     big: {
-      fontSize: ["40px", "54px"],
+      fontSize: ["30px", "54px"],
       fontWeight: "bold",
     },
   },

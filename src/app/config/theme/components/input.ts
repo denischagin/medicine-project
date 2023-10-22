@@ -28,9 +28,9 @@ const underline = definePartsStyle({
       bg: "gray.700",
       color: "whiteAlpha.800",
       _placeholder: {
-        color: "whiteAlpha.500"
-      }
-    }
+        color: "whiteAlpha.500",
+      },
+    },
   },
 });
 
@@ -48,6 +48,19 @@ const outlined = definePartsStyle({
     _hover: {
       border: "1px solid",
       borderColor: "teal.500",
+    },
+    _dark: {
+      bgColor: "blackAlpha.300",
+      borderColor: "whiteAlpha.700",
+
+      _focus: {
+        border: "1px solid",
+        borderColor: "teal.500",
+      },
+      _hover: {
+        border: "1px solid",
+        borderColor: "teal.500",
+      },
     },
   },
 });

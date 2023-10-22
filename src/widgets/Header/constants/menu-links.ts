@@ -1,11 +1,11 @@
 import { paths } from '@/shared/constants'
 
-export interface menuLink {
+export interface IMenuLink {
   path: string
-  text: string
+  title: string
 }
 
-export const menuLinks = [
+export const menuLinks: IMenuLink[] = [
   {
     title: 'Авторизоваться',
     path: paths.login,
@@ -15,7 +15,11 @@ export const menuLinks = [
     path: paths.register,
   },
   {
+    title: "Больницы",
+    path: paths.hospitals,
+  },
+  {
     title: 'О нас',
     path: '#',
   },
-]
+] 

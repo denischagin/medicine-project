@@ -1,12 +1,14 @@
 import { InputSearchProps } from './InputSearch.interface'
 import searchIcon from './svgs/search.svg'
-import { Input, InputGroup, InputRightElement, Spinner } from '@chakra-ui/react'
+import searchIconWhite from './svgs/search-white.svg'
+import { Image, Input, InputGroup, InputRightElement, Spinner, useColorModeValue } from '@chakra-ui/react'
 
 export const InputSearch = ({
   inputGroupProps,
   inputProps,
   isLoading = false,
 }: InputSearchProps) => {
+  const searchIconByMode = useColorModeValue(searchIcon, searchIconWhite)
   return (
     <InputGroup
       maxW="946px"
@@ -22,8 +24,8 @@ export const InputSearch = ({
         {isLoading ? (
           <Spinner />
         ) : (
-          <img
-            src={searchIcon}
+          <Image
+            src={searchIconByMode}
             alt="search icon"
           />
         )}

@@ -1,0 +1,27 @@
+$ratingItemWidth: 30px;
+
+.rating {
+  display: flex;
+  height: min-content;
+
+  &__item {
+    display: flex;
+    overflow: hidden;
+    width: $ratingItemWidth;
+    height: $ratingItemWidth;
+    object-fit: cover;
+    mask-image: url(../assets/star.svg);
+    -webkit-mask-image: url(../assets/star.svg);
+
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    background-color: rgba(121, 121, 121, 0.151);
+
+    .rating__content {
+      background-color: rebeccapurple;
+      height: 100%;
+
+      background-color: gold;
+    }
+  }
+}

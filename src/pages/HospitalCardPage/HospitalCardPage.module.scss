@@ -1,0 +1,20 @@
+.hospital_card {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        border-radius: 10px; 
+        overflow: hidden;
+        margin-top: 30px;
+    }
+
+    &__title_wrapper {
+        display: flex;
+        padding: 40px 40px;
+        background-color: #9CD89B;
+    }
+
+    &__description {
+        margin-left: 55px;
+    }
+}

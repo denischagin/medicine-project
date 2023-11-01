@@ -1,0 +1,26 @@
+.auth_card {
+  margin: 0 auto;
+  max-width: 467px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  background-color: white;
+  overflow: hidden;
+  width: 100%;
+
+  &_img {
+    position: relative;
+    width: 100%;
+    padding-top: 52%;
+    animation: appearance 1s;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}

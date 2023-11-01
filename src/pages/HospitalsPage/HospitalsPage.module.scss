@@ -1,0 +1,16 @@
+.hospitals {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+  }
+  
+  &__search {
+    margin-top: 30px;
+  }
+}

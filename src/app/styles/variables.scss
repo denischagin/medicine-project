@@ -1,0 +1,21 @@
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: #8acc7a;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #67a857;
+  }
+}
+
+$primary-color-400: #0D8042;
+$primary-color-600: #1F4C2E;

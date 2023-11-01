@@ -14,8 +14,7 @@ export const HospitalsList = ({ search }: HospitalsListProps) => {
   } = useGetAllHospitalsQuery({ name: search });
 
   const isHospitalsEmpty = hospitals?.length === 0;
-  const hospitalsListBG = useColorModeValue("white", "blackAlpha.400")
-
+  const hospitalsListBG = useColorModeValue("white", "blackAlpha.400");
 
   return (
     <>
@@ -24,12 +23,10 @@ export const HospitalsList = ({ search }: HospitalsListProps) => {
         boxShadow="dark-lg"
         className={css.hospitals_list}
       >
-        <Flex
-          className={css.hospitals_list__wrapper}
-        >
+        <Flex className={css.hospitals_list__wrapper}>
           {isSuccess &&
             (isHospitalsEmpty ? (
-              <Text >Список больниц пустой</Text>
+              <Text>Список больниц пустой</Text>
             ) : (
               hospitals.map(({ id, name, address, rating }) => (
                 <HospitalRatingCard

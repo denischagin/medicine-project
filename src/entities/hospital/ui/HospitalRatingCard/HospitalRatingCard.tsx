@@ -1,15 +1,13 @@
-import { HospitalRating } from '@/shared/ui/rating/HospitalRating'
-import { Image } from '@chakra-ui/react'
-import defaultHospital from '@/entities/hospital/assets/img/default-hospital.png'
-import defaultHospitalSvg from '@/entities/hospital/assets/svg/camera.svg'
+import { HospitalRating } from "@/shared/ui/rating/HospitalRating";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 
-import css from './HospitalRatingCard.module.scss'
-import { MouseEventHandler } from 'react'
-import { HospitalRatingCardProps } from './HospitalRatingCard.interface'
-import { StyledButton } from '@/shared/ui/button/StyledButton/StyledButton'
-import { useNavigate } from 'react-router'
-import { paths } from '@/shared/constants'
-import { AvatarHospital } from '@/shared/ui/avatar/AvatarHospital/AvatarHospital'
+import css from "./HospitalRatingCard.module.scss";
+import { MouseEventHandler } from "react";
+import { HospitalRatingCardProps } from "./HospitalRatingCard.interface";
+import { StyledButton } from "@/shared/ui/button/StyledButton/StyledButton";
+import { useNavigate } from "react-router";
+import { paths } from "@/shared/constants";
+import { AvatarHospital } from "@/shared/ui/avatar/AvatarHospital/AvatarHospital";
 
 export const HospitalRatingCard = ({
   id,
@@ -17,15 +15,16 @@ export const HospitalRatingCard = ({
   rating,
   address: description,
 }: HospitalRatingCardProps) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const hospitalCardBg = useColorModeValue("white", "blackAlpha.500");
 
   const handleShowMoreInfo: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault()
-    navigate(paths.hospitalsCardById(id))
-  }
+    e.preventDefault();
+    navigate(paths.hospitalsCardById(id));
+  };
 
   return (
-    <div className={css.hospital_card}>
+    <Box className={css.hospital_card} bg={hospitalCardBg}>
       <AvatarHospital />
 
       <div className={css.hospital_card__content}>
@@ -40,6 +39,6 @@ export const HospitalRatingCard = ({
           <StyledButton onClick={handleShowMoreInfo}>Подробнее</StyledButton>
         </div>
       </div>
-    </div>
-  )
-}
+    </Box>
+  );
+};

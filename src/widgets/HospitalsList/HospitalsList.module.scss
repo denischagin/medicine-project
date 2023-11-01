@@ -1,4 +1,4 @@
-@import '@/app/styles/variables.scss';
+@import "@/app/styles/variables.scss";
 
 .hospitals_list {
   display: flex;
@@ -7,7 +7,7 @@
   width: 100%;
 
   margin-top: 30px;
-  padding: 10px 5px 20px 0px;
+  padding: 10px 5px 20px 5px;
   border-radius: 10px;
   margin-bottom: 20px;
 
@@ -16,11 +16,8 @@
     flex-direction: column;
     flex-grow: 1;
     align-items: center;
-    overflow-y: scroll;
     padding: 10px 6px 10px 6px;
     gap: 11px;
     border-radius: 10px;
-
-    @include custom-scrollbar;
   }
 }

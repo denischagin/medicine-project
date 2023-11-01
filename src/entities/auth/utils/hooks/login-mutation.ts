@@ -16,24 +16,22 @@ export const useLoginMutation = (
   return useMutation({
     mutationFn: (credits: ILoginCredits) => AuthService.login(credits),
 
-    onError: (error, variables) => {
+    onError: (error) => {
       toast({
         title: `${error.response?.data ?? "Произошла ошибка"}`,
         status: "error",
         isClosable: true,
         duration: 2000,
       });
-      options?.onErrorExtends && options.onErrorExtends(error, variables);
     },
 
-    onSuccess: (data: ILoginResponse, variables: ILoginCredits) => {
+    onSuccess: () => {
       toast({
         title: `Успешно`,
         status: "success",
         isClosable: true,
         duration: 2000,
       });
-      options?.onSuccessExtends && options.onSuccessExtends(data, variables);
     },
 
     ...options,

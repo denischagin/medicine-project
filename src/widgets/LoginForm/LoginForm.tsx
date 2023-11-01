@@ -9,16 +9,7 @@ import { AuthHelpLink } from "@/features/AuthHelpLink";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export const LoginForm = () => {
-  const {
-    mutate: loginMutate,
-    isSuccess,
-    isLoading,
-  } = useLoginMutation({
-    onSuccessExtends: ({ token, refreshToken }) => {
-      login(token, refreshToken);
-      navigate(paths.hospitals, { replace: true });
-    },
-  });
+  const { mutate: loginMutate, isSuccess, isLoading } = useLoginMutation();
 
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -32,7 +23,12 @@ export const LoginForm = () => {
   if (isSuccess) navigate(paths.home, { replace: true });
 
   const onSubmit: SubmitHandler<ILoginCreditsWithOutRole> = (data) => {
-    loginMutate({ ...data, role: "Patient" });
+    loginMutate(data, {
+      onSuccess: (loginData) => {
+        login(loginData);
+        navigate(paths.hospitals, { replace: true });
+      },
+    });
   };
 
   return (

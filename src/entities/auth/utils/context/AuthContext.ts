@@ -1,10 +1,12 @@
 import { createContext } from "react";
+import { IAuthResponse } from "../../models/auth";
 
-export interface IAuthContext {
-  login: (accessToken: string, refreshToken: string) => void;
+export interface IAuthContext extends Partial<IAuthResponse> {
+  login: ({}: IAuthResponse) => void;
   logout: () => void;
   isAuth: boolean;
   isLoading: false;
+  authData?: IAuthResponse;
 }
 
 export const AuthContext = createContext<IAuthContext>({
@@ -13,5 +15,3 @@ export const AuthContext = createContext<IAuthContext>({
   logout: () => {},
   isLoading: false,
 });
-
-

@@ -9,11 +9,11 @@ import {
 } from "@/entities/auth/models";
 
 class AuthService {
-  private BASE = "Accounts/";
+  private BASE = "";
 
   public async login(credits: ILoginCredits) {
     const response = await axios.post<ILoginResponse>(
-      this.BASE + "login",
+      this.BASE + "login-patient/",
       credits
     );
     return response.data;
@@ -29,7 +29,7 @@ class AuthService {
 
   public async refresh(credits: IRefresh) {
     const response = await axios.post<IRefreshResponse>(
-      this.BASE + "refresh-token",
+      this.BASE + "refresh",
       credits
     );
     return response.data;

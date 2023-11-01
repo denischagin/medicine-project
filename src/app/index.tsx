@@ -1,4 +1,4 @@
-import { Providers } from "./providers";
+import { Providers } from "./libs/providers";
 import "./styles/base.scss";
 import { Routing } from "@/pages";
 

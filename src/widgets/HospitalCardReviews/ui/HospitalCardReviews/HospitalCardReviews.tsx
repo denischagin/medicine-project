@@ -3,7 +3,7 @@ import { HospitalReviewCard } from "@/entities/hospital";
 
 export const HospitalCardReviews = () => {
   return (
-    <Stack>
+    <Stack p="14px" bg="white">
       <HospitalReviewCard
         title="Привет"
         description="как дела"

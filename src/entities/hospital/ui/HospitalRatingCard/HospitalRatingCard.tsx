@@ -7,7 +7,7 @@ import { HospitalRatingCardProps } from "./HospitalRatingCard.interface";
 import { StyledButton } from "@/shared/ui/button/StyledButton/StyledButton";
 import { useNavigate } from "react-router";
 import { paths } from "@/shared/constants";
-import { AvatarHospital } from "@/shared/ui/avatar/AvatarHospital/AvatarHospital";
+import { AvatarHospital } from "@/shared/ui/avatar/ui/AvatarHospital/AvatarHospital";
 
 export const HospitalRatingCard = ({
   id,
@@ -25,7 +25,7 @@ export const HospitalRatingCard = ({
 
   return (
     <Box className={css.hospital_card} bg={hospitalCardBg}>
-      <AvatarHospital />
+      <AvatarHospital variant="filled" />
 
       <div className={css.hospital_card__content}>
         <div className={css.hospital_card__title_wrapper}>

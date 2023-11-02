@@ -2,10 +2,10 @@ import { useParams } from "react-router";
 import css from "./HospitalCardPage.module.scss";
 import { useGetHospitalById } from "@/entities/hospital/utils/hooks/get-hospital-by-id.ts";
 import { MainContainer } from "@/shared/ui/container";
-import { AvatarHospital } from "@/shared/ui/avatar/AvatarHospital";
 import { Button, Flex, Text, Textarea } from "@chakra-ui/react";
 import { HospitalRating } from "@/shared/ui/rating/HospitalRating";
 import { HospitalCardReviews } from "@/widgets/HospitalCardReviews";
+import { AvatarHospital } from "@/shared/ui/avatar";
 
 export const HospitalCardPage = () => {
   const { hospitalId } = useParams();
@@ -43,7 +43,7 @@ export const HospitalCardPage = () => {
               <Button>Отправить отзыв</Button>
               <Button>Прикрепить фото</Button>
 
-              <HospitalRating size="small" rating={rating} />
+              <HospitalRating rating={rating} />
             </Flex>
           </Flex>
           <HospitalCardReviews></HospitalCardReviews>

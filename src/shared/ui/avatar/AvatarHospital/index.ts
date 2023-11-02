@@ -1,1 +1,0 @@
-export { AvatarHospital } from './AvatarHospital'

@@ -1,1 +1,1 @@
-export { HospitalCardPage } from './HospitalCardPage'
+export { HospitalCardPage } from "./ui";

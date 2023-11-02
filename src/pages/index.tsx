@@ -1,10 +1,10 @@
-import { LoginPage } from './LoginPage'
-import { RegistrationPage } from './RegisterPage'
-import { Route, Routes } from 'react-router'
-import { paths } from '@/shared/constants'
-import { Layout } from '@/app/layout/ui/Layout'
-import { HospitalsPage } from './HospitalsPage/HospitalsPage'
-import { HospitalCardPage } from './HospitalCardPage'
+import { LoginPage } from "./LoginPage";
+import { RegistrationPage } from "./RegisterPage";
+import { Route, Routes } from "react-router";
+import { paths } from "@/shared/constants";
+import { Layout } from "./Layout";
+import { HospitalsPage } from "./HospitalsPage";
+import { HospitalCardPage } from "./HospitalCardPage";
 
 export const Routing = () => {
   return (
@@ -31,5 +31,5 @@ export const Routing = () => {
         />
       </Route>
     </Routes>
-  )
-}
+  );
+};

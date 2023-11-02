@@ -1,8 +1,8 @@
 import { AuthCard } from "@/entities/auth";
 
 import { LoginWithEsia } from "@/features/LoginWithEsia";
-import { LoginForm } from "@/widgets/LoginForm";
 import { Heading, VStack } from "@chakra-ui/react";
+import { LoginForm } from "@/widgets/LoginForm";
 
 export const LoginPage = () => {
   return (

@@ -1,61 +1,48 @@
 import { AuthContext } from "@/entities/auth/utils/context";
-import { ReactNode, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { localStorageKeys } from "@/shared/constants";
 import { useLocalStorage } from "@/shared/utils/hooks";
-import AuthService from "@/entities/auth/utils/services";
 import { IAuthResponse } from "../../models/auth";
-
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
-interface ITokens {
-  accessToken: string;
-  refreshToken: string;
-}
+import { useRefreshMutation } from "@/entities/auth/utils/hooks/refresh-mutation.ts";
+import { AuthProviderProps } from "@/entities/auth/utils/providers/AuthProvider.interface.ts";
+import { ITokens } from "@/entities/auth/models";
 
 export const AuthProvider = (props: AuthProviderProps) => {
+  const { mutate: refreshMutate } = useRefreshMutation();
+
   const [isAuth, setIsAuth] = useState(false);
   const [authData, setAuthData] = useState<IAuthResponse | undefined>();
 
   const {
     value: tokensJSON,
     setItem,
-    removeItem,
+    removeItem
   } = useLocalStorage(localStorageKeys.tokens);
 
-  useEffect(() => {
-    const refreshTokens = async (access: string, refresh: string) => {
-      const refreshData = await AuthService.refresh({
-        accessToken: access,
-        refreshToken: refresh,
-      });
 
-      login(refreshData);
-    };
-
-    try {
-      if (tokensJSON) {
-        const { accessToken, refreshToken }: ITokens = JSON.parse(tokensJSON);
-        refreshTokens(accessToken, refreshToken);
-      }
-    } catch (e) {
-      logout();
-    }
-  }, []);
-  
-  const login = (loginData: IAuthResponse) => {
+  const login = useCallback((loginData: IAuthResponse) => {
     const { accessToken } = loginData;
     setIsAuth(true);
     setItem(accessToken);
     setAuthData(loginData);
-  };
+  }, [setItem]);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     removeItem();
     setIsAuth(false);
     setAuthData(undefined);
-  };
+  }, [removeItem]);
+
+  useEffect(() => {
+    if (tokensJSON) {
+      const credits: ITokens = JSON.parse(tokensJSON);
+      refreshMutate(credits, {
+        onError: () => logout(),
+        onSuccess: (refreshData) => login(refreshData)
+      });
+    } else
+      logout();
+  }, [login, logout, refreshMutate, tokensJSON]);
 
   return (
     <AuthContext.Provider

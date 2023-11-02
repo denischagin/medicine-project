@@ -1,6 +1,6 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import HospitalService from "../services/HospitalService";
-import { queryKeys } from "@/shared/constants/queryKeys";
+import { queryKeys } from "@/shared/constants";
 import { GetHospitalByIdResponse } from "../../models";
 import { AxiosError } from "axios";
 

@@ -1,7 +1,7 @@
 import { LoginWithEsia } from "@/features/LoginWithEsia";
-import { RegistrationForm } from "@/widgets/RegistrationForm";
 import { AuthCard } from "@/entities/auth";
 import { Heading, VStack } from "@chakra-ui/react";
+import { RegistrationForm } from "@/widgets/RegistrationForm";
 
 export const RegistrationPage = () => {
   return (

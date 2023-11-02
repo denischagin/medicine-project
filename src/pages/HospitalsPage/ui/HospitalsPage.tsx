@@ -1,19 +1,14 @@
-import { useGetAllHospitalsQuery } from "@/entities/hospital/utils";
 import { useDebounce } from "@/shared/utils/hooks";
-import { HospitalsList } from "@/widgets/HospitalsList/HospitalsList";
 
 import { ChangeEvent, useState } from "react";
-import { InputSearch } from "../../shared/ui/input/InputSearch";
+import { InputSearch } from "@/shared/ui/input/InputSearch";
 import css from "./HospitalsPage.module.scss";
 import { MainContainer } from "@/shared/ui/container";
+import { HospitalsList } from "@/widgets/HospitalsList";
 
 export const HospitalsPage = () => {
   const [search, setSearch] = useState("");
   const debounceSearch = useDebounce(search, 300);
-
-  useGetAllHospitalsQuery({
-    name: debounceSearch,
-  });
 
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -24,10 +19,10 @@ export const HospitalsPage = () => {
       <MainContainer className={css.hospitals__container}>
         <InputSearch
           inputProps={{
-            onChange: handleChangeSearch,
+            onChange: handleChangeSearch
           }}
           inputGroupProps={{
-            className: css.hospitals__search,
+            className: css.hospitals__search
           }}
         />
 

@@ -1,1 +1,1 @@
-export { AuthHelpLink} from './AuthHelpLink'
+export { AuthHelpLink } from "./ui";

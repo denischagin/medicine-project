@@ -1,1 +1,1 @@
-export { LoginWithEsia } from './LoginWithEsia'
+export { LoginWithEsia } from "./ui";

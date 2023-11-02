@@ -1,0 +1,1 @@
+export { HospitalsList } from "./ui";

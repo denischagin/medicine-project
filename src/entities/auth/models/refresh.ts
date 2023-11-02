@@ -5,4 +5,10 @@ export interface IRefresh {
   refreshToken: string;
 }
 
-export interface IRefreshResponse extends IAuthResponse {}
+export interface IRefreshResponse extends IAuthResponse {
+}
+
+export interface ITokens {
+  accessToken: string;
+  refreshToken: string;
+}

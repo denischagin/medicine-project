@@ -1,4 +1,4 @@
-import { queryKeys } from "@/shared/constants/queryKeys";
+import { queryKeys } from "@/shared/constants";
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import HospitalService from "../services/HospitalService";
 import { GetAllHospitalsResponse, GetAllhospitalsParams } from "../../models";

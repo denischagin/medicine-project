@@ -1,4 +1,4 @@
-import { useGetHospitalById } from '@/entities/hospital/utils/hooks/get-hospital-by-id'
+import { useGetHospitalById } from '@/entities/hospital/utils/hooks/get-hospital-by-id.ts'
 import { useParams } from 'react-router'
 import css from './ReviewsList.module.scss'
 

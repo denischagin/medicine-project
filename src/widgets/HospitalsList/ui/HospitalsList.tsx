@@ -1,16 +1,16 @@
-import { HospitalRatingCard } from "@/entities/hospital/ui/HospitalRatingCard";
 import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
-import { HospitalsListProps } from "./HospitalsList.interface";
+import { HospitalsListProps } from "./HospitalsList.interface.ts";
 import css from "./HospitalsList.module.scss";
 import { ProgressLoader } from "@/shared/ui/loader";
 import { useGetAllHospitalsQuery } from "@/entities/hospital";
+import { HospitalRatingCard } from "@/entities/hospital/ui";
 
 export const HospitalsList = ({ search }: HospitalsListProps) => {
   const {
     isLoading,
     isError,
     isSuccess,
-    data: hospitals,
+    data: hospitals
   } = useGetAllHospitalsQuery({ name: search });
 
   const isHospitalsEmpty = hospitals?.length === 0;

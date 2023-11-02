@@ -3,6 +3,7 @@ import { buttonTheme } from "./components/button";
 import { inputTheme } from "./components/input";
 import { headingTheme } from "./components/heading";
 import { textTheme } from "./components/text";
+import { textareaTheme } from "@/app/config/theme/components/textarea.ts";
 
 const overrides = {
   fonts: {
@@ -14,6 +15,7 @@ const overrides = {
     Button: buttonTheme,
     Heading: headingTheme,
     Text: textTheme,
+    Textarea: textareaTheme,
   },
   initialColorMode: "light",
   useSystemColorMode: false,

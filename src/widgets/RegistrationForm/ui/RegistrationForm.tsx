@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { paths } from "@/shared/constants";
 import { IRegistrationCreditsWithOutRole } from "@/entities/auth/models";
 import { useRegistrationMutation } from "@/entities/auth";
-import { useAuth } from "@/entities/auth/utils/hooks/use-auth";
+import { useAuth } from "@/entities/auth/utils/hooks/use-auth.ts";
 import { AuthHelpLink } from "@/features/AuthHelpLink";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -12,12 +12,12 @@ export const RegistrationForm = () => {
   const {
     mutate: registrationMutate,
     isSuccess,
-    isLoading,
+    isLoading
   } = useRegistrationMutation({
-    onSuccessExtends: ({ token, refreshToken }) => {
-      login(token, refreshToken);
+    onSuccessExtends: ({ token, ...registrationData }) => {
+      login({ accessToken: token, ...registrationData });
       navigate(paths.hospitals, { replace: true });
-    },
+    }
   });
 
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export const RegistrationForm = () => {
   const {
     handleSubmit,
     register,
-    formState: { isValid },
+    formState: { isValid }
   } = useForm<IRegistrationCreditsWithOutRole>();
 
   if (isSuccess) navigate(paths.home, { replace: true });

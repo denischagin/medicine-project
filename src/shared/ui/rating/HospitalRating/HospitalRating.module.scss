@@ -5,6 +5,7 @@ $ratingItemSizeSmall: 25px;
 .rating {
   display: flex;
   height: min-content;
+  cursor: pointer;
 
   &__item {
     display: flex;

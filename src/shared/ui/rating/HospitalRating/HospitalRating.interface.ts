@@ -1,3 +1,6 @@
+export type HospitalRatingSizes = "large" | "small"
+
 export interface HospitalRatingProps {
-  rating: number
+  rating: number;
+  size?: HospitalRatingSizes;
 }

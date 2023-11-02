@@ -1,8 +1,8 @@
+$avatarHospitalSizeLarge: 155px;
+$avatarHospitalSizeSmall: 70px;
+
 .avatar_hospital {
   position: relative;
-  max-width: 155px;
-  width: 100%;
-  height: 155px;
 
   &__img {
     position: absolute;
@@ -10,4 +10,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  &.size__large {
+    max-width: $avatarHospitalSizeLarge;
+    height: $avatarHospitalSizeLarge;
+    width: 100%;
+  }
+
+  &.size__small {
+    max-width: $avatarHospitalSizeSmall;
+    height: $avatarHospitalSizeSmall;
+    width: 100%;
+  }
+
 }

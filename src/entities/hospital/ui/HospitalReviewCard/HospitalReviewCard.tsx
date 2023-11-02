@@ -6,10 +6,10 @@ import { HospitalRating } from "@/shared/ui/rating/HospitalRating";
 export const HospitalReviewCard = ({ rating, title, description }: HospitalReviewCardProps) => {
   return (
     <Flex>
-      <AvatarHospital />
+      <AvatarHospital size="small" />
 
       <Stack>
-        <Heading>{title}</Heading>
+        <Heading fontSize="large">{title}</Heading>
         <Text>{description}</Text>
       </Stack>
 

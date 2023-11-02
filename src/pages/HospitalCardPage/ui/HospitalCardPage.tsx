@@ -5,6 +5,7 @@ import { MainContainer } from "@/shared/ui/container";
 import { AvatarHospital } from "@/shared/ui/avatar/AvatarHospital";
 import { Button, Flex, Text, Textarea } from "@chakra-ui/react";
 import { HospitalRating } from "@/shared/ui/rating/HospitalRating";
+import { HospitalCardReviews } from "@/widgets/HospitalCardReviews";
 
 export const HospitalCardPage = () => {
   const { hospitalId } = useParams();
@@ -41,9 +42,11 @@ export const HospitalCardPage = () => {
             <Flex flexGrow="1" direction="column" gap="13px" alignItems="center">
               <Button>Отправить отзыв</Button>
               <Button>Прикрепить фото</Button>
-              <HospitalRating rating={rating} />
+
+              <HospitalRating size="small" rating={rating} />
             </Flex>
           </Flex>
+          <HospitalCardReviews></HospitalCardReviews>
         </div>
       </MainContainer>
     </section>

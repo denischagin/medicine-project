@@ -1,14 +1,17 @@
 import { Box } from "@chakra-ui/react";
 import { HospitalRatingProps } from "./HospitalRating.interface";
 import css from "./HospitalRating.module.scss";
+import classNames from "classnames";
 
-export const HospitalRating = ({ rating }: HospitalRatingProps) => {
+export const HospitalRating = ({ rating, size = "large" }: HospitalRatingProps) => {
   const calculateRatingItemWidth = (countItem: number) =>
     rating >= countItem ? "100%" : `${(rating - countItem + 1) * 100}%`;
 
+  const ratingItemClassname = classNames(css.rating__item, css["size__" + size]);
+
   return (
     <div className={css.rating}>
-      <span className={css.rating__item}>
+      <span className={ratingItemClassname}>
         <Box
           as="span"
           className={css.rating__content}
@@ -16,7 +19,7 @@ export const HospitalRating = ({ rating }: HospitalRatingProps) => {
         ></Box>
       </span>
 
-      <span className={css.rating__item}>
+      <span className={ratingItemClassname}>
         <Box
           as="span"
           className={css.rating__content}
@@ -24,7 +27,7 @@ export const HospitalRating = ({ rating }: HospitalRatingProps) => {
         ></Box>
       </span>
 
-      <span className={css.rating__item}>
+      <span className={ratingItemClassname}>
         <Box
           as="span"
           className={css.rating__content}
@@ -32,7 +35,7 @@ export const HospitalRating = ({ rating }: HospitalRatingProps) => {
         ></Box>
       </span>
 
-      <span className={css.rating__item}>
+      <span className={ratingItemClassname}>
         <Box
           as="span"
           className={css.rating__content}
@@ -40,7 +43,7 @@ export const HospitalRating = ({ rating }: HospitalRatingProps) => {
         ></Box>
       </span>
 
-      <span className={css.rating__item}>
+      <span className={ratingItemClassname}>
         <Box
           as="span"
           className={css.rating__content}

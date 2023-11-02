@@ -1,4 +1,6 @@
-$ratingItemWidth: 30px;
+$ratingItemSizeLarge: 30px;
+$ratingItemSizeSmall: 25px;
+
 
 .rating {
   display: flex;
@@ -7,8 +9,6 @@ $ratingItemWidth: 30px;
   &__item {
     display: flex;
     overflow: hidden;
-    width: $ratingItemWidth;
-    height: $ratingItemWidth;
     object-fit: cover;
     mask-image: url(../assets/star.svg);
     -webkit-mask-image: url(../assets/star.svg);
@@ -21,5 +21,15 @@ $ratingItemWidth: 30px;
       height: 100%;
       background-color: gold;
     }
+  }
+
+  .size__small {
+    width: $ratingItemSizeSmall;
+    height: $ratingItemSizeSmall;
+  }
+
+  .size__large {
+    width: $ratingItemSizeLarge;
+    height: $ratingItemSizeLarge;
   }
 }

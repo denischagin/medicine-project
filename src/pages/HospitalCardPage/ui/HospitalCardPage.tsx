@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import css from "./HospitalCardPage.module.scss";
-import { useGetHospitalById } from "@/entities/hospital/utils/hooks/get-hospital-by-id.ts";
+import { useGetHospitalById } from "@/entities/hospital/libs/hooks/get-hospital-by-id.ts";
 import { MainContainer } from "@/shared/ui/container";
 import { Button, Flex, Text, Textarea } from "@chakra-ui/react";
 import { HospitalRating } from "@/shared/ui/rating";

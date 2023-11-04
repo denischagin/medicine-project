@@ -3,7 +3,7 @@ import {
   ILoginResponse,
   UseLoginMutationArgs,
 } from "@/entities/auth/models";
-import AuthService from "@/entities/auth/utils/services/AuthService";
+import AuthService from "@/entities/auth/libs/services/AuthService";
 import { useToast } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";

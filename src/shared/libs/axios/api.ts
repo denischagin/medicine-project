@@ -17,7 +17,7 @@ authApi.interceptors.request.use((config) => {
 authApi.interceptors.response.use(
   (value) => value,
   (error) => {
-    const originalRequest = error.config;
+      return error.config
   }
 );
 

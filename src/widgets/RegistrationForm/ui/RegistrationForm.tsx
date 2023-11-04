@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { paths } from "@/shared/constants";
 import { IRegistrationCreditsWithOutRole } from "@/entities/auth/models";
 import { useRegistrationMutation } from "@/entities/auth";
-import { useAuth } from "@/entities/auth/utils/hooks/use-auth.ts";
+import { useAuth } from "@/entities/auth/libs/hooks/use-auth.ts";
 import { AuthHelpLink } from "@/features/AuthHelpLink";
 import { SubmitHandler, useForm } from "react-hook-form";
 

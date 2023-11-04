@@ -17,7 +17,7 @@ export interface IDoctorForHospitalRequest {
   name: string
   patronymic?: string
   speciality: IDoctorForHospitalRequest
-  appointmenst: unknown[]
+  appointments: unknown[]
 }
 
 export interface IHospitalFullInformation extends IHospitalBase {
@@ -28,9 +28,9 @@ export interface IHospitalFullInformation extends IHospitalBase {
   doctors: IDoctorForHospitalRequest
 }
 
-export interface GetAllHospitalsResponse extends IHospitalBase {}
+export type GetAllHospitalsResponse = IHospitalBase[]
 
-export interface GetAllhospitalsParams {
+export interface GetAllHospitalsParams {
   cityId?: number
   name?: string
   minRating?: number

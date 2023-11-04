@@ -4,7 +4,7 @@ import { Button, Input, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { ILoginCreditsWithOutRole } from "@/entities/auth/models";
 import { useLoginMutation } from "@/entities/auth";
-import { useAuth } from "@/entities/auth/utils/hooks";
+import { useAuth } from "@/entities/auth/libs/hooks";
 import { AuthHelpLink } from "@/features/AuthHelpLink";
 import { SubmitHandler, useForm } from "react-hook-form";
 

@@ -1,10 +1,10 @@
-import { AuthContext } from "@/entities/auth/utils/context";
+import { AuthContext } from "@/entities/auth/libs/context";
 import { useCallback, useEffect, useState } from "react";
 import { localStorageKeys } from "@/shared/constants";
 import { useLocalStorage } from "@/shared/libs/hooks";
 import { IAuthResponse } from "../../models/auth";
-import { useRefreshMutation } from "@/entities/auth/utils/hooks/refresh-mutation.ts";
-import { AuthProviderProps } from "@/entities/auth/utils/providers/AuthProvider.interface.ts";
+import { useRefreshMutation } from "@/entities/auth/libs/hooks/refresh-mutation.ts";
+import { AuthProviderProps } from "@/entities/auth/libs/providers/AuthProvider.interface.ts";
 import { ITokens } from "@/entities/auth/models";
 
 export const AuthProvider = (props: AuthProviderProps) => {

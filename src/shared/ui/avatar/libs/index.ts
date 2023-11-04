@@ -1,1 +1,0 @@
-export { getAvatarBySize } from "./helpers";

@@ -1,7 +1,7 @@
 import { AuthContext } from "@/entities/auth/utils/context";
 import { useCallback, useEffect, useState } from "react";
 import { localStorageKeys } from "@/shared/constants";
-import { useLocalStorage } from "@/shared/utils/hooks";
+import { useLocalStorage } from "@/shared/libs/hooks";
 import { IAuthResponse } from "../../models/auth";
 import { useRefreshMutation } from "@/entities/auth/utils/hooks/refresh-mutation.ts";
 import { AuthProviderProps } from "@/entities/auth/utils/providers/AuthProvider.interface.ts";

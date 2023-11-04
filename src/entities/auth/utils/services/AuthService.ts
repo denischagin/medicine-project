@@ -1,4 +1,4 @@
-import axios from "@/shared/utils/axios/api";
+import axios from "@/shared/libs/axios/api";
 import {
   ILoginCredits,
   ILoginResponse,

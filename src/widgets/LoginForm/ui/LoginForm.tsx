@@ -1,4 +1,4 @@
-import { InputPassword } from "@/shared/ui/input/InputPassword";
+import { InputPassword } from "@/shared/ui/input";
 import { paths } from "@/shared/constants";
 import { Button, Input, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";

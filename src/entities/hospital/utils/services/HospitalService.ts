@@ -1,4 +1,4 @@
-import { authAxios } from "@/shared/utils/axios/api";
+import { authAxios } from "@/shared/libs/axios/api";
 import {
   GetAllHospitalsResponse,
   GetAllhospitalsParams,

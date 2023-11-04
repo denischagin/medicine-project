@@ -28,7 +28,7 @@ export const InputPassword = forwardRef(({
   const eyeIcon = useColorModeValue(eye, eyeWhite)
   const eyeOffIcon = useColorModeValue(eyeOff, eyeOffWhite)
 
-  const handleToogleShowPassword = () => setIsShowPassword((prev) => !prev);
+  const handleToggleShowPassword = () => setIsShowPassword((prev) => !prev);
 
   return (
     <InputGroup className={classNameInputGroup}>
@@ -38,7 +38,7 @@ export const InputPassword = forwardRef(({
         {...restProps}
       />
 
-      <InputRightElement onClick={handleToogleShowPassword}>
+      <InputRightElement onClick={handleToggleShowPassword}>
         <IconButton aria-label="toggle-password" variant="ghost" isRound>
           <Image src={isShowPassword ? eyeOffIcon : eyeIcon} />
         </IconButton>

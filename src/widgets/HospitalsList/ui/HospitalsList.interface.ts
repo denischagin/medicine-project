@@ -1,3 +1,3 @@
 export interface HospitalsListProps {
-  search: string
+    searchHospital: string
 }

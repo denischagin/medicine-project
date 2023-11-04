@@ -1,0 +1,1 @@
+export { HospitalCardTitle } from "./ui";

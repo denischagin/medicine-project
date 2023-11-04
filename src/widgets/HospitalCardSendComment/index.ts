@@ -1,0 +1,1 @@
+export { HospitalCardSendComment } from "./ui";

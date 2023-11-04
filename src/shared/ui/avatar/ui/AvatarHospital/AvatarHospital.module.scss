@@ -2,45 +2,27 @@ $avatarHospitalSizeLarge: 155px;
 $avatarHospitalSizeSmall: 70px;
 
 .avatar_hospital {
-  position: relative;
   border-radius: 5px;
-
-  &__img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    &_background {
-
-    }
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &.size__large {
-    max-width: $avatarHospitalSizeLarge;
+    min-width: $avatarHospitalSizeLarge;
     height: $avatarHospitalSizeLarge;
-    width: 100%;
   }
 
   &.size__small {
-    max-width: $avatarHospitalSizeSmall;
+    min-width: $avatarHospitalSizeSmall;
     height: $avatarHospitalSizeSmall;
-    width: 100%;
   }
 
   &.variant__filled {
-    max-width: $avatarHospitalSizeLarge;
-    height: $avatarHospitalSizeLarge;
-    width: 100%;
+    background-image: url("../../assets/img/default-hospital.png");
   }
 
   &.variant__outlined {
     border: 1px solid black;
     background-color: white;
-
-    .avatar_hospital__img_background {
-      display: none;
-    }
   }
-
 }

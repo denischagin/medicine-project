@@ -7,11 +7,12 @@ import { MainContainer } from "@/shared/ui/container";
 import { HospitalsList } from "@/widgets/HospitalsList";
 
 export const HospitalsPage = () => {
-    const [search, setSearch] = useState("");
-    const debounceSearch = useDebounce(search, 300);
+    const [searchHospitalName, setSearchHospitalName] = useState("");
+
+    const debounceSearch = useDebounce(searchHospitalName, 300);
 
     const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
+        setSearchHospitalName(e.target.value);
     };
 
     return (
@@ -19,14 +20,15 @@ export const HospitalsPage = () => {
             <MainContainer className={css.hospitals__container}>
                 <InputSearch
                     inputProps={{
-                        onChange: handleChangeSearch
+                        onChange: handleChangeSearch,
+                        value: searchHospitalName
                     }}
                     inputGroupProps={{
                         className: css.hospitals__search
                     }}
                 />
 
-                <HospitalsList search={debounceSearch} />
+                <HospitalsList searchHospital={debounceSearch} />
             </MainContainer>
         </div>
     );

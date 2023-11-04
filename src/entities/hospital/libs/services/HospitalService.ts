@@ -8,7 +8,7 @@ import { baseQueryWithAuth } from "@/shared/libs/axios";
 class HospitalService {
     private BASE = "hospitals/";
 
-    public getAllHospitalsByParams = async (params: GetAllHospitalsParams) =>
+    public getAllHospitalsByParams = async (params?: GetAllHospitalsParams) =>
         baseQueryWithAuth<GetAllHospitalsResponse>({
             url: this.BASE,
             params

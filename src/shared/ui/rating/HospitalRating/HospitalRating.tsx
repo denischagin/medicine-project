@@ -4,54 +4,54 @@ import css from "./HospitalRating.module.scss";
 import classNames from "classnames";
 
 export const HospitalRating = ({ rating, size = "large" }: HospitalRatingProps) => {
-  const calculateRatingItemWidth = (countItem: number) =>
-    rating >= countItem ? "100%" : `${(rating - countItem + 1) * 100}%`;
+    const calculateRatingItemWidth = (countItem: number) =>
+        rating >= countItem ? "100%" : `${(rating - countItem + 1) * 100}%`;
 
-  const ratingItemClassname = classNames(css.rating__item, css["size__" + size]);
+    const ratingItemClassname = classNames(css.rating__item, css["size__" + size]);
 
-  return (
-    <Tooltip label={rating.toFixed(1)}>
-      <div className={css.rating}>
-      <span className={ratingItemClassname}>
-        <Box
-          as="span"
-          className={css.rating__content}
-          w={calculateRatingItemWidth(1)}
-        ></Box>
-      </span>
+    return (
+        <Tooltip label={rating.toFixed(1)}>
+            <div className={css.rating}>
+                <span className={ratingItemClassname}>
+                    <Box
+                        as="span"
+                        className={css.rating__content}
+                        w={calculateRatingItemWidth(1)}
+                    />
+                </span>
 
-        <span className={ratingItemClassname}>
-        <Box
-          as="span"
-          className={css.rating__content}
-          w={calculateRatingItemWidth(2)}
-        ></Box>
-      </span>
+                <span className={ratingItemClassname}>
+                    <Box
+                        as="span"
+                        className={css.rating__content}
+                        w={calculateRatingItemWidth(2)}
+                    />
+                </span>
 
-        <span className={ratingItemClassname}>
-        <Box
-          as="span"
-          className={css.rating__content}
-          w={calculateRatingItemWidth(3)}
-        ></Box>
-      </span>
+                <span className={ratingItemClassname}>
+                    <Box
+                        as="span"
+                        className={css.rating__content}
+                        w={calculateRatingItemWidth(3)}
+                    />
+                </span>
 
-        <span className={ratingItemClassname}>
-        <Box
-          as="span"
-          className={css.rating__content}
-          w={calculateRatingItemWidth(4)}
-        ></Box>
-      </span>
+                <span className={ratingItemClassname}>
+                    <Box
+                        as="span"
+                        className={css.rating__content}
+                        w={calculateRatingItemWidth(4)}
+                    />
+                </span>
 
-        <span className={ratingItemClassname}>
-        <Box
-          as="span"
-          className={css.rating__content}
-          w={calculateRatingItemWidth(5)}
-        ></Box>
-      </span>
-      </div>
-    </Tooltip>
-  );
+                <span className={ratingItemClassname}>
+                    <Box
+                        as="span"
+                        className={css.rating__content}
+                        w={calculateRatingItemWidth(5)}
+                    />
+                </span>
+            </div>
+        </Tooltip>
+    );
 };

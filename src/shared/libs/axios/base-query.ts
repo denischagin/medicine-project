@@ -7,12 +7,11 @@ export const baseQuery: BaseQuery = async <R>(
     axiosConfig: BaseQueryConfig
 ) => {
     try {
-        const response =
-            await axios<unknown, AxiosResponse<R>>(
-                typeof axiosConfig === "string"
-                    ? { url: axiosConfig }
-                    : axiosConfig
-            );
+        axiosConfig = typeof axiosConfig === "string"
+            ? { url: axiosConfig }
+            : axiosConfig;
+
+        const response = await axios<unknown, AxiosResponse<R>>(axiosConfig);
 
         return response.data;
     } catch (e) {
@@ -24,12 +23,11 @@ export const baseQueryWithAuth: BaseQuery = async <R>(
     axiosConfig: BaseQueryConfig
 ) => {
     try {
-        const response =
-            await authApi<unknown, AxiosResponse<R>>(
-                typeof axiosConfig === "string"
-                    ? { url: axiosConfig }
-                    : axiosConfig
-            );
+        axiosConfig = typeof axiosConfig === "string"
+            ? { url: axiosConfig }
+            : axiosConfig;
+
+        const response = await authApi<unknown, AxiosResponse<R>>(axiosConfig);
 
         return response.data;
     } catch (e) {

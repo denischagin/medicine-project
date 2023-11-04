@@ -5,7 +5,7 @@ import css from "./HospitalRatingCard.module.scss";
 import { MouseEventHandler } from "react";
 import { HospitalRatingCardProps } from "./HospitalRatingCard.interface";
 import { useNavigate } from "react-router";
-import { paths } from "@/shared/constants";
+import { hospitalsCardById } from "@/shared/constants";
 import { AvatarHospital } from "@/shared/ui/avatar/ui/AvatarHospital/AvatarHospital";
 import { useWhiteBlack } from "@/shared/libs/hooks";
 
@@ -20,7 +20,7 @@ export const HospitalRatingCard = ({
 
     const handleShowMoreInfo: MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault();
-        navigate(paths.hospitalsCardById(id));
+        navigate(hospitalsCardById(id));
     };
 
     return (

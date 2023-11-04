@@ -15,10 +15,13 @@ export const HospitalReviewCard = ({ rating, title, description }: HospitalRevie
             py="20px"
             px="12px"
             alignItems="center"
+            wrap="wrap"
+            rowGap="10px"
+            columnGap="25px"
         >
             <AvatarHospital size="small" />
 
-            <Stack ml="25px" flexGrow={3}>
+            <Stack flexGrow={3}>
                 <Heading fontSize="large">{title}</Heading>
                 <Text>{description}</Text>
             </Stack>

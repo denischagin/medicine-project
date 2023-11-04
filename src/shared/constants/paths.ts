@@ -1,12 +1,9 @@
-export const paths = {
-  login: '/login',
-  register: '/register',
-  home: '/',
-  hospitals: '/hospitals',
-  hospitalsCardById: function(id: number) { 
-    return `${this.hospitals}/${id}`
-  },
-  hospitalCard: function() {
-    return `${this.hospitals}/:hospitalId`
-  } 
+export enum paths {
+    login = "/login",
+    register = "/register",
+    home = "/",
+    hospitals = "/hospitals",
+    hospitalCard = `/hospitals/:hospitalId`,
 }
+
+export const hospitalsCardById = (id: number | string) => `${paths.hospitals}/${id}`;

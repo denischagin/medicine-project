@@ -1,53 +1,57 @@
-import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
-import { HospitalsListProps } from "./HospitalsList.interface.ts";
+import { Flex, Text } from "@chakra-ui/react";
 import css from "./HospitalsList.module.scss";
 import { ProgressLoader } from "@/shared/ui/loader";
 import { useGetAllHospitalsQuery } from "@/entities/hospital";
 import { HospitalRatingCard } from "@/entities/hospital/ui";
+import { useWhiteBlack } from "@/shared/libs/hooks";
+import { HospitalsListProps } from "@/widgets/HospitalsList/ui/HospitalsList.interface.ts";
 
-export const HospitalsList = ({ search }: HospitalsListProps) => {
-  const {
-    isLoading,
-    isError,
-    isSuccess,
-    data: hospitals
-  } = useGetAllHospitalsQuery({ name: search });
+export const HospitalsList = ({ searchHospital }: HospitalsListProps) => {
 
-  const isHospitalsEmpty = hospitals?.length === 0;
-  const hospitalsListBG = useColorModeValue("white", "blackAlpha.400");
+    const {
+        isLoading,
+        isError,
+        isSuccess,
+        data: hospitals
+    } = useGetAllHospitalsQuery({
+        name: searchHospital, cityId: 0
+    });
 
-  return (
-    <>
-      <Flex
-        bgColor={hospitalsListBG}
-        boxShadow="dark-lg"
-        className={css.hospitals_list}
-      >
-        <Flex className={css.hospitals_list__wrapper}>
-          {isSuccess &&
-            (isHospitalsEmpty ? (
-              <Text>Список больниц пустой</Text>
-            ) : (
-              hospitals.map(({ id, name, address, rating }) => (
-                <HospitalRatingCard
-                  key={id}
-                  id={id}
-                  address={address}
-                  name={name}
-                  rating={rating}
-                />
-              ))
-            ))}
+    const isHospitalsEmpty = hospitals?.length === 0;
+    const hospitalsListBG = useWhiteBlack(400);
 
-          {isLoading && <ProgressLoader />}
+    return (
+        <>
+            <Flex
+                bgColor={hospitalsListBG}
+                boxShadow="dark-lg"
+                className={css.hospitals_list}
+            >
+                <Flex className={css.hospitals_list__wrapper}>
+                    {isSuccess &&
+                        (isHospitalsEmpty ? (
+                            <Text>Список больниц пустой</Text>
+                        ) : (
+                            hospitals.map(({ id, name, address, rating }) => (
+                                <HospitalRatingCard
+                                    key={id}
+                                    id={id}
+                                    address={address}
+                                    name={name}
+                                    rating={rating}
+                                />
+                            ))
+                        ))}
 
-          {isError && (
-            <Text fontSize="3xl" variant="error">
-              Возникла ошибка при загрузке больниц
-            </Text>
-          )}
-        </Flex>
-      </Flex>
-    </>
-  );
+                    {isLoading && <ProgressLoader />}
+
+                    {isError && (
+                        <Text fontSize="3xl" variant="error">
+                            Возникла ошибка при загрузке больниц
+                        </Text>
+                    )}
+                </Flex>
+            </Flex>
+        </>
+    );
 };

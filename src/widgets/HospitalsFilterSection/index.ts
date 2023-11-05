@@ -1,1 +1,3 @@
-export { HospitalsFilterSection } from "./ui";
+export { HospitalsFilterSection } from "./ui/HospitalsFilterSection";
+export { ChooseCityPopover } from "./ui/ChooseCityPopover";
+

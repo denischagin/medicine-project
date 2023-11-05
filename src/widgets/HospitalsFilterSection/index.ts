@@ -1,0 +1,1 @@
+export { HospitalsFilterSection } from "./ui";

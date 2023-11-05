@@ -1,8 +1,7 @@
 import { Button, Flex, Textarea } from "@chakra-ui/react";
 import { HospitalRating } from "@/shared/ui/rating";
 import { useParams } from "react-router";
-import { useGetHospitalById } from "@/entities/hospital/libs/hooks/get-hospital-by-id.ts";
-
+import { useGetHospitalById } from "@/entities/hospital/libs";
 export const HospitalCardSendComment = () => {
     const { hospitalId } = useParams();
 

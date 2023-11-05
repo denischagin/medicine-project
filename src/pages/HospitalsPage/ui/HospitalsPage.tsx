@@ -1,35 +1,15 @@
-import { useDebounce } from "@/shared/libs/hooks";
-
-import { ChangeEvent, useState } from "react";
-import { InputSearch } from "@/shared/ui/input";
 import css from "./HospitalsPage.module.scss";
-import { MainContainer } from "@/shared/ui/container";
 import { HospitalsList } from "@/widgets/HospitalsList";
+import { HospitalsFilterSection } from "@/widgets/HospitalsFilterSection";
+import { Container } from "@chakra-ui/react";
 
 export const HospitalsPage = () => {
-    const [searchHospitalName, setSearchHospitalName] = useState("");
-
-    const debounceSearch = useDebounce(searchHospitalName, 300);
-
-    const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchHospitalName(e.target.value);
-    };
-
     return (
         <div className={css.hospitals}>
-            <MainContainer className={css.hospitals__container}>
-                <InputSearch
-                    inputProps={{
-                        onChange: handleChangeSearch,
-                        value: searchHospitalName
-                    }}
-                    inputGroupProps={{
-                        className: css.hospitals__search
-                    }}
-                />
-
-                <HospitalsList searchHospital={debounceSearch} />
-            </MainContainer>
+            <Container className={css.hospitals__container}>
+                <HospitalsFilterSection />
+                <HospitalsList />
+            </Container>
         </div>
     );
 };

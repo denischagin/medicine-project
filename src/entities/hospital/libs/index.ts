@@ -1,2 +1,3 @@
-export * from './hooks/get-all-hospitals-query'
-export {default} from './services/HospitalService'
+export * from "./hooks";
+export { default } from "./services/HospitalService";
+export { HospitalsListFilterProvider } from "./providers";

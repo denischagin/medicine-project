@@ -1,8 +1,7 @@
 import { Stack, Text } from "@chakra-ui/react";
 import { HospitalReviewCard } from "@/entities/hospital";
 import { useParams } from "react-router";
-import { useGetHospitalById } from "@/entities/hospital/libs/hooks/get-hospital-by-id.ts";
-
+import { useGetHospitalById } from "@/entities/hospital/libs";
 export const HospitalCardReviews = () => {
     const { hospitalId } = useParams();
 

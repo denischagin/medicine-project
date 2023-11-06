@@ -9,17 +9,21 @@ import {
 } from "@chakra-ui/react";
 import { ChooseCityItem } from "@/widgets/HospitalsFilterSection/ui/ChooseCityItem";
 import { useHospitalListFilter } from "@/entities/hospital";
+import { useGreen } from "@/shared/libs/hooks";
 
 export const ChooseCityPopover = () => {
     const heading = ["Округ", "Регион", "Город"];
 
     const { cityId, setCityId } = useHospitalListFilter();
+    const headingBG = useGreen(200, 600);
 
     return (
         <Popover>
             <PopoverTrigger>
                 <Button>
-                    г. Кострома
+                    г.{" "}
+                    { cityId === 0 && "Кострома"}
+                    { cityId === 1 && "Буй"}
                 </Button>
             </PopoverTrigger>
 
@@ -32,7 +36,7 @@ export const ChooseCityPopover = () => {
                         templateColumns="repeat(3, 200px)"
                         h="100px"
                         borderBottom="1px solid black"
-                        bg="green.200"
+                        bg={headingBG}
                     >
                         {heading.map((title, index) => (
                             <GridItem

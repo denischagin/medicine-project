@@ -1,6 +1,5 @@
 import {
-    Button, Grid, GridItem, Heading,
-    Popover,
+    Button, Grid, GridItem, Popover,
     PopoverArrow,
     PopoverBody,
     PopoverCloseButton,
@@ -8,22 +7,26 @@ import {
     PopoverTrigger, Stack
 } from "@chakra-ui/react";
 import { ChooseCityItem } from "@/widgets/HospitalsFilterSection/ui/ChooseCityItem";
-import { useHospitalListFilter } from "@/entities/hospital";
-import { useGreen } from "@/shared/libs/hooks";
+import { DISTRICTS_MOCK, useHospitalListFilter } from "@/entities/hospital";
+import { useState } from "react";
+import {
+    ChooseCityPopoverHeading
+} from "@/widgets/HospitalsFilterSection/ui/ChooseCityPopoverHeading/ChooseCityPopoverHeading.tsx";
 
 export const ChooseCityPopover = () => {
-    const heading = ["Округ", "Регион", "Город"];
+    const { currentCity, setCurrentCity } = useHospitalListFilter();
 
-    const { cityId, setCityId } = useHospitalListFilter();
-    const headingBG = useGreen(200, 600);
+    const [currentDistrict, setCurrentDistrict] =
+        useState(DISTRICTS_MOCK[0]);
+
+    const [currentRegion, setCurrentRegion] =
+        useState(currentDistrict.regions[0]);
 
     return (
         <Popover>
             <PopoverTrigger>
                 <Button>
-                    г.{" "}
-                    { cityId === 0 && "Кострома"}
-                    { cityId === 1 && "Буй"}
+                    г. {currentCity?.cityName}
                 </Button>
             </PopoverTrigger>
 
@@ -32,23 +35,7 @@ export const ChooseCityPopover = () => {
                 <PopoverCloseButton />
 
                 <PopoverBody p={0}>
-                    <Grid
-                        templateColumns="repeat(3, 200px)"
-                        h="100px"
-                        borderBottom="1px solid black"
-                        bg={headingBG}
-                    >
-                        {heading.map((title, index) => (
-                            <GridItem
-                                display="flex"
-                                alignItems="end"
-                                borderRight={index !== 2 ? "1px solid black" : "none"}
-                                p="10px"
-                            >
-                                <Heading fontSize="36px">{title}</Heading>
-                            </GridItem>
-                        ))}
-                    </Grid>
+                    <ChooseCityPopoverHeading />
 
                     <Grid
                         templateColumns="repeat(3, 200px)"
@@ -58,7 +45,20 @@ export const ChooseCityPopover = () => {
                             borderRight="1px solid black"
                         >
                             <Stack spacing={1}>
-                                <ChooseCityItem isActive>Центральный округ</ChooseCityItem>
+                                {DISTRICTS_MOCK.map((district) => (
+                                    <ChooseCityItem
+                                        isActive={district.districtId === currentDistrict?.districtId}
+                                        onClick={() => {
+                                            const region = district.regions[0];
+
+                                            setCurrentDistrict({ ...district });
+                                            setCurrentRegion({ ...region });
+                                            setCurrentCity({ ...region.cities[0] });
+                                        }}
+                                    >
+                                        {district.districtName}
+                                    </ChooseCityItem>
+                                ))}
                             </Stack>
                         </GridItem>
 
@@ -66,28 +66,32 @@ export const ChooseCityPopover = () => {
                             borderRight="1px solid black"
                         >
                             <Stack spacing={1}>
-                                <ChooseCityItem isActive>Костромская область</ChooseCityItem>
+                                {currentDistrict.regions.map((region) => (
+                                    <ChooseCityItem
+                                        isActive={region.regionId === currentRegion?.regionId}
+                                        onClick={() => {
+                                            setCurrentRegion({ ...region });
+                                            setCurrentCity({ ...region.cities[0] });
+                                        }}
+                                    >
+                                        {region.regionName}
+                                    </ChooseCityItem>
+                                ))}
                             </Stack>
 
                         </GridItem>
 
                         <GridItem>
                             <Stack spacing={1}>
-                                <ChooseCityItem
-                                    isActive={cityId === 0}
-                                    onClick={() => setCityId(0)}
-                                >
-                                    Кострома
-                                </ChooseCityItem>
-
-                                <ChooseCityItem
-                                    isActive={cityId === 1}
-                                    onClick={() => setCityId(1)}
-                                >
-                                    Буй
-                                </ChooseCityItem>
+                                {currentRegion.cities.map((city) => (
+                                    <ChooseCityItem
+                                        isActive={city.cityId === currentCity?.cityId}
+                                        onClick={() => setCurrentCity({ ...city })}
+                                    >
+                                        {city.cityName}
+                                    </ChooseCityItem>
+                                ))}
                             </Stack>
-
                         </GridItem>
                     </Grid>
                 </PopoverBody>

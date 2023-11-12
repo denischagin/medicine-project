@@ -6,7 +6,7 @@ import { HospitalRatingCard } from "@/entities/hospital/ui";
 import { useWhiteBlack } from "@/shared/libs/hooks";
 
 export const HospitalsList = () => {
-    const { cityId, hospitalName } = useHospitalListFilter();
+    const { currentCity, hospitalName } = useHospitalListFilter();
 
     const {
         isLoading,
@@ -14,7 +14,7 @@ export const HospitalsList = () => {
         isSuccess,
         data: hospitals
     } = useGetAllHospitalsQuery({
-        name: hospitalName ?? "", cityId: cityId ?? 0
+        name: hospitalName ?? "", cityId: currentCity?.cityId ?? 0
     });
 
     const isHospitalsEmpty = hospitals?.length === 0;

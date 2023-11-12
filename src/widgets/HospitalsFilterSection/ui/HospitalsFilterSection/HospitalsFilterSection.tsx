@@ -10,10 +10,10 @@ import { ChooseCityPopover } from "@/widgets/HospitalsFilterSection";
 export const HospitalsFilterSection = () => {
     const [searchHospitalName, setSearchHospitalName] = useState("");
 
-    const { setHospitalName, cityId, hospitalName } = useHospitalListFilter();
+    const { setHospitalName, currentCity, hospitalName } = useHospitalListFilter();
 
     const { isFetching } = useGetAllHospitalsQuery({
-        name: hospitalName ?? "", cityId: cityId ?? 0
+        name: hospitalName ?? "", cityId: currentCity?.cityId ?? 0
     });
 
     const debounceSearch = useDebounce(searchHospitalName, 300);

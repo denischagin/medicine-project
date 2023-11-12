@@ -1,16 +1,36 @@
 import { createContext } from "react";
 
+export interface ICity {
+    cityId: number;
+    cityName: string;
+}
+
+export interface IRegion {
+    regionId: number
+    regionName: string
+    cities: ICity[]
+}
+
+export interface IDistrict {
+    districtId: number
+    districtName: string
+    regions: IRegion[]
+}
+
+
 export interface IHospitalsListFilterContext {
-    cityId: number | null;
-    setCityId: (value: number) => void;
+    currentCity: ICity | null;
+    setCurrentCity: (value: ICity) => void;
 
     hospitalName: string | null;
     setHospitalName: (value: string) => void;
 }
 
 export const HospitalsListFilterContext = createContext<IHospitalsListFilterContext>({
-    cityId: null,
+    currentCity: null,
     hospitalName: null,
-    setCityId: () => {},
-    setHospitalName: () => {},
+    setCurrentCity: () => {
+    },
+    setHospitalName: () => {
+    }
 });
